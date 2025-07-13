@@ -1,0 +1,89 @@
+.howto-section {
+  padding: 60px 20px;
+  background-color: #f8faff;
+}
+
+.howto-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.howto-title {  
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: bold;
+  color: #002093;
+  margin-bottom: 10px;
+}
+
+.howto-subline {
+  font-size: 1.1em;
+  color: #3a3a3a;
+  margin-bottom: 40px;
+}
+
+.howto-steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.howto-step {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  width: 280px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.howto-step:hover {
+  transform: translateY(-5px);
+}
+
+.howto-step-number {
+  font-size: 2.5em;
+  color: #1d92df;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.howto-step-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #002093;
+  margin-bottom: 10px;
+}
+
+.howto-step-text {
+  font-size: 0.95em;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Mobile Optimierung */
+@media (max-width: 768px) {
+  .howto-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .howto-step {
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .howto-section {
+    padding: 40px 10px;
+  }
+
+  .howto-step {
+    padding: 20px;
+  }
+
+  .howto-step-number {
+    font-size: 2em;
+  }
+}

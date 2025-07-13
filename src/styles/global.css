@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Header Container */
+.atlui_header {
+  @apply w-full bg-white shadow-sm;
+}
+
+/* Innerer Wrapper */
+.atlui_header_inner {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16;
+}
+
+/* Logo */
+.atlui_logo {
+  @apply h-8 w-auto;
+}
+
+/* Navigation */
+.atlui_nav {
+  @apply hidden md:flex gap-6 text-sm text-darkblue font-medium;
+}
+
+.atlui_nav a {
+  @apply hover:text-primary transition;
+}

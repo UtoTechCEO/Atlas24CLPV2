@@ -1,0 +1,11 @@
+.atlui_logo {
+    margin-top: 0px;
+    height: 78px; /* z. B. 48px statt 32px */
+    width: auto;  /* oder fixe Breite wie width: 160px */
+}
+
+.atlui_header {
+    margin-top: 10px;
+    padding-bottom: 1rem;
+
+}

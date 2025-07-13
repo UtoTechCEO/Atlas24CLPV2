@@ -1,0 +1,243 @@
+---
+
+import "./atlui_form_mobile.css";
+import "./atlui_form.css";
+import "./air-datepicker.css";
+// example-wrapper.js
+
+
+---
+
+<!-- form_mobile -->
+<div class="container">
+    <div class="atlui_form_wrapper">
+        <div class="atlui_progress_container">
+            <div class="atlui_progress_bar">
+                <div class="atlui_progress_bar atlui_progress_fill"></div>
+            </div>
+        </div>
+        <form class="atlui_form atlui_form_offer_mobile" name="atlui_form_offer" action="" method="post">
+            <input type="hidden" name="FormType" id="FormType" value="5">
+            
+            <div class="atlui_form_section" data-step-index="1">
+                
+				
+				<div class="col_full_width">
+                    <input class="atlui_block w100" type="number" min="0" max="9999" name="MoveFromAddrZip" id="MoveFromAddrZip" placeholder="Ihre Postleitzahl" 
+                           data-atlui-validation-method="swiss_zip_code" onwheel="return false;"/>
+                    <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine Postleitzahl an.</span>
+                        
+                </div>
+				
+				
+
+
+            </div>
+
+
+            <div class="atlui_form_section atlui_hidden" data-step-index="2">
+				
+				<div class="step-label">Schritt 2 von 3</div>
+					
+				
+				<label class="w100 col_full_width" for="Service">Dienstleistung wählen</label>
+                <div class="col_full_width">
+                    <select class="w100 atlui_multiselect" name="Service" id="Service">
+                        <option value="3">Umzug inkl. Reinigung</option>
+						<option value="1">Umzug</option>
+                        <option value="2">Reinigung</option>
+                        
+                    </select>
+                </div>
+				
+                <div class="col_full_width atlui_form_title" id="title_move_out_2">Am Auszugsort</div>
+                <div class="col_full_width">
+                <div class="col_full_width_mobile">
+                    <label class="w100" for="MoveFromAddrStreet">Strasse/Nr.</label>
+                    <input class="atlui_block w100" type="text" name="MoveFromAddrStreet" id="MoveFromAddrStreet" placeholder="" 
+                           data-atlui-validation-method="contains_street_num" data-atlui-validation-sibling="MoveFromAddrZip" />
+                    <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine Strasse inkl. Nummer an.</span>
+                </div>
+					                
+					
+                    <label class="w100" for="MoveFromNumOfRooms">Anzahl Zimmer</label>
+                    <select class="atlui_block w100" name="MoveFromNumOfRooms" id="MoveFromNumOfRooms">
+                        <option value="1">1 Zimmer</option>
+                        <option value="1.5">1.5 Zimmer</option>
+                        <option value="2">2 Zimmer</option>
+                        <option value="2.5">2.5 Zimmer</option>
+                        <option value="3">3 Zimmer</option>
+                        <option value="3.5">3.5 Zimmer</option>
+                        <option value="4">4 Zimmer</option>
+                        <option value="4.5" selected="selected">4.5 Zimmer</option>
+                        <option value="5">5 Zimmer</option>
+                        <option value="5.5">5.5 Zimmer</option>
+                        <option value="6">6 Zimmer</option>
+                        <option value="6.5">6.5 Zimmer</option>
+                        <option value="7">7 Zimmer</option>
+                        <option value="7.5">7.5 Zimmer</option>
+                        <option value="8">8 Zimmer</option>
+                        <option value="8.5">Mehr als 8.5 Zimmer</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="w100" for="MoveFromFloor">Etage</label>
+                    <select class="atlui_block w100" name="MoveFromFloor" id="MoveFromFloor">
+                        <option value="UG">UG</option>
+                        <option value="EG" selected="selected">EG</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15+</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="w100" for="MoveFromElevatorExistsYes">Lift vorhanden ?</label>
+                    <div class="atlui_switch_field">
+                        <input type="radio" name="MoveFromElevatorExists" id="MoveFromElevatorExistsYes" value="Ja" checked>
+                        <label for="MoveFromElevatorExistsYes">Ja</label>
+
+                        <input type="radio" name="MoveFromElevatorExists" id="MoveFromElevatorExistsNo" value="Nein">
+                        <label for="MoveFromElevatorExistsNo">Nein</label>
+                    </div>
+                </div>
+
+                <div class="col_full_width atlui_form_title atlui_hide_for_clean">Am Einzugsort</div>
+                <div class="col_full_width_mobile atlui_hide_for_clean">
+                    <label class="w100" for="MoveToAddrStreet">Strasse/Nr.</label>
+                    <input class="atlui_block w100" type="text" name="MoveToAddrStreet" id="MoveToAddrStreet" placeholder=""
+                           data-atlui-validation-method="contains_street_num" data-atlui-validation-sibling="MoveToAddrZip"/>
+                    <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine Strasse inkl. Nummer an.</span>
+                </div>
+                <div class="col_full_width_mobile atlui_hide_for_clean">
+                    <label class="w100" for="MoveToAddrZip">Postleitzahl</label>
+                    <input class="atlui_block w100" type="number" min="0" max="9999" name="MoveToAddrZip" id="MoveToAddrZip" placeholder="" 
+                           data-atlui-validation-method="swiss_zip_code" onwheel="return false;"/>
+                    <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine Postleitzahl an.</span>
+                </div>
+            
+                <div class="atlui_hide_for_clean">
+                    <label class="w100" for="MoveToFloor">Etage</label>
+                    <select class="atlui_block w100" name="MoveToFloor" id="MoveToFloor">
+                        <option value="UG">UG</option>
+                        <option value="EG" selected="selected">EG</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15+</option>
+                    </select>
+                </div>
+                <div class="atlui_hide_for_clean">
+                    <label class="w100" for="MoveToElevatorExistsYes">Lift vorhanden ?</label>
+                    <div class="atlui_switch_field">
+                        <input type="radio" name="MoveToElevatorExists" id="MoveToElevatorExistsYes" value="Ja" checked>
+                        <label for="MoveToElevatorExistsYes">Ja</label>
+
+                        <input type="radio" name="MoveToElevatorExists" id="MoveToElevatorExistsNo" value="Nein">
+                        <label for="MoveToElevatorExistsNo">Nein</label>
+                    </div>
+                </div>
+            
+            </div>
+
+        <div class="atlui_form_section atlui_hidden" data-step-index="3"> 
+			
+			<div class="step-label">Letzter Schritt, Fast geschafft!</div>
+			
+            <div class="col_full_width atlui_form_title">Personenbezogene Angaben</div>
+            <div class="col_full_width_mobile">
+                <label class="w100" for="FirstName">Vorname</label>
+                <input class="atlui_block w100" type="text" name="FirstName" id="FirstName" data-atlui-validation-method="non_empty" />
+                <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie Ihren Vornamen an.</span>
+            </div>
+            <div class="col_full_width_mobile">
+                <label class="w100" for="LastName">Nachname</label>
+                <input class="atlui_block w100" type="text" name="LastName" id="LastName" data-atlui-validation-method="non_empty" />
+                <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie Ihren Nachnamen an.</span>
+            </div>
+            <div class="col_full_width_mobile">
+                <label class="w100" for="Email">Email</label>
+                <input class="atlui_block w100" type="text" name="Email" id="Email" autocomplete="on" data-atlui-validation-method="email"/>
+                <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie Ihre Emailadresse an.</span>
+            </div>
+            <div class="col_full_width_mobile">
+                <label class="w100" for="Phone">Telefonnummer (Mobil)</label>
+                <input class="atlui_block w100" type="text" name="Phone" id="Phone" autocomplete="on" data-atlui-validation-method="phone"/>
+                <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine gültige Schweizer Mobilnummer an (z.B. +41 79 123 45 67).</span>
+            </div>
+            <div class="col_full_width">
+                <p class="atlui_info_text">
+                    Ihre E-Mail Adresse wird verwendet um Ihnen die Offerten zuzusenden. <br/>
+                </p>
+                <p class="atlui_info_text">
+                    Die Telefonnummer dient der Verifizierung Ihrer Angaben und für allfällige Rückfragen gemäß unserer <a href="https://atlas24.ch/datenschutzerklarung-12-2024/" target="_blank">Datenschutzrichtlinie</a>.
+                </p>
+            </div>
+
+            <div class="col_full_width atlui_form_title">Datum und Verfügbarkeit</div>
+            <div class="col_full_width">
+                <label class="w100" for="MovingDate" id="label_move_date">Umzugstermin</label>
+                <input class="atlui_block w100" type="text" name="MovingDate" id="MovingDate" data-atlui-validation-method="date"/>
+                <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie einen (gewünschten) Umzugstermin an (Beispiel: 01.02.2026).</span>
+            </div>
+            <div class="col_full_width">
+                <label class="w100" for="Comments">Bemerkungen</label>
+                <textarea class="atlui_block w100 col_full_width" name="Comments" id="Comments"></textarea>
+                <span class="atlui_span_validation_error atlui_hidden"></span>
+            </div>
+        </div>
+        <div class="col_full_width altui_step_menu">
+            <button class="atlui_button_next atlui_button_forward atlui_hidden" type="button" id="atlui_btn_next">Zum letzten Schritt</button>
+            <button class="atlui_button_forward" type="button" id="atlui_btn_forward">Anfrage Starten</button>
+            <button class="atlui_button_submit atlui_hidden" type="submit" id="atlui_btn_submit">Kostenlose & Unverbindliche Offerten Anfordern</button>
+            <button class="atlui_button_back atlui_hidden" type="button" id="atlui_btn_back">Zurück</button>
+            <span class="atlui_span_validation_error atlui_hidden" id="atlui_server_invalid">Serverseitige Validierung fehlgeschlagen.</span>
+        </div>
+			<div class="atlui_trust_text col_full_width" data-step-index= "1" style="text-align: left; margin-top: 10px; font-size: 0.75em; color: #444;">
+ 				 ⭐️ <strong>4.7 / 5</strong> basierend auf über <strong>100</strong> erfolgreichen Umzügen
+				</div>
+        <div class="agb-hinweis atlui_hidden" data-step-index="3">
+                Mit dem Klick auf „Kostenlose & Unverbindliche Offerten Anfordern“ bestätigen Sie die Richtigkeit Ihrer Angaben und erklären sich mit unseren 
+            <a href="https://atlas24.ch/agb-b2c/" target="_blank">allgemeinen Geschäftsbedingungen</a> einverstanden.
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<script src="/assets/air-datepicker.js" is:inline></script>
+<script src="/assets/atlui_form_mobile.js" is:inline></script>
+
+
+
+<!-- Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVdRCngXIz2iJbQluDmu6zWNIEc-rhfR8&loading=async&libraries=places&callback=ATLUI_GLOBALS.init_places" async></script>
+
+<!-- javascript -->
+<!-- <script type="text/javascript" src="/wp-content/plugins/atlas24-ui/form-ui/air-datepicker.js?ver=6.7.2"></script>
+<script type="text/javascript" src="/wp-content/plugins/atlas24-ui/form-ui/atlui_form_mobile.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVdRCngXIz2iJbQluDmu6zWNIEc-rhfR8&loading=async&libraries=places&callback=ATLUI_GLOBALS.init_places" async></script> -->

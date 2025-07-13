@@ -1,0 +1,160 @@
+.atlui_form_offer_mobile > .atlui_form_section[data-step-index="1"] {
+    row-gap: 5px;
+}
+
+.atlui_form_offer_mobile {
+    background-color: #F5F7FA;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+
+button.atlui_button_back {
+    background: #dedede;
+    color: #000;
+}
+
+.atlui_form_wrapper{
+    border-radius: 15px;
+}
+
+@media(width <= 670px) {
+    button.atlui_button_back, button.atlui_button_forward, button.atlui_button_submit {
+        width: 100% !important;
+    }
+
+    button.atlui_button_forward, button.atlui_button_submit {
+        float: none;
+    }
+
+}
+
+button.atlui_button_forward, button.atlui_button_back, button.atlui_button_submit {
+    border-radius: 7.5px;
+
+}
+
+/* call to action */
+@keyframes shine {
+    0% {left: -100px}
+    20% {left: 100%}
+    100% {left: 100%}
+}
+
+/* Shimmer-Effekt */
+button.atlui_button_forward::before,
+button.atlui_button_submit::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    140deg,
+    rgba(255,255,255, 0) 30%,
+    rgba(255,255,255, .6),
+    rgba(255,255,255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  animation: shine 5s infinite ease-out;
+  z-index: 0;
+}
+
+/* Shimmer nur innerhalb des Buttons anzeigen */
+button.atlui_button_forward,
+button.atlui_button_submit {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* hack: fix newline for validation message on checkbox (ugly, I know...) */
+#confirm_invalid {
+    display: block;
+}
+
+.agb-hinweis {
+  background-color: #f5f5f5;
+  padding: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.agb-hinweis a {
+  color: #555;
+  text-decoration: underline;
+}
+
+
+/* progress bar */
+.atlui_progress_container {
+    background-color: #F5F7FA;
+    height: 50px;
+    width: 100%;
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.atlui_progress_bar {
+    height: 15px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: #eaeaea;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+
+.atlui_progress_bar.atlui_progress_fill {
+    width: 0%;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    transition: width .6s ease;
+}
+
+/* Abstand oberhalb des gesamten Postleitzahl-Blocks erhöhen */
+.atlui_form_section[data-step-index="1"] #MoveFromAddrZip {
+    margin-top: 0; /* sicherstellen, dass Input keinen Offset hat */
+}
+
+.atlui_form_section[data-step-index="1"] label[for="MoveFromAddrZip"] {
+    margin-top: 15px;
+    display: inline-block; /* wichtig für margin-top wirksamkeit */
+}
+
+.atlui_form_section[data-step-index="2"] label[for="MoveFromNumOfRooms"] {
+    margin-top: 15px;
+    display: inline-block; /* wichtig für margin-top wirksamkeit */
+}
+
+.atlui_form_section[data-step-index="2"] label[for="Service"] {
+    margin-top: 5px;
+	margin-bottom: -15px;
+    display: inline-block; /* wichtig für margin-top wirksamkeit */
+}
+
+label[for="MoveFromAddrZip"] {
+    display: block;
+    margin-bottom: 4px; /* Abstand zum Feld */
+}
+
+/* Progressbar im ersten Step ausblenden */
+.atlui_progress_container.atlui_hidden_by_step {
+    display: none !important;
+}
+
+.atlui_hidden_by_step {
+  display: none !important;
+}
+
+.container {
+  border-radius: 16px; /* oder dein Wunschwert */
+  overflow: hidden;    /* damit Inhalte nicht über den Rand hinausragen */
+  background: white;   /* oder deine Formularfarbe */
+}

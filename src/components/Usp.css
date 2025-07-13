@@ -1,0 +1,53 @@
+.usp-section {
+  background-color: #f5f7fa;
+  padding: 4rem 1rem;
+}
+
+.usp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.usp-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.usp-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.usp-image img {
+  max-width: 120px;
+  height: auto;
+}
+
+.usp-text h3 {
+  font-size: 1.5rem;
+  color: #002093;
+  margin-bottom: 0.5rem;
+}
+
+.usp-text p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .usp-row,
+  .usp-row.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .usp-image img {
+    margin: 0 auto;
+  }
+}
