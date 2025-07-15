@@ -1,0 +1,61 @@
+---
+
+import "../components/Atlui_form_verification.css"
+
+---
+
+
+<!-- form_verification -->
+<div class="container atlui_container_verification">
+    <div class="atlui_form_wrapper">
+        <form class="atlui_form" name="atlui_form_verification" action="" method="post">
+            <div class="atlui_form_section atlui_form_verification_success atlui_hidden">
+                <div class="atlui_form_title col_full_width col_center">Vielen Dank!</div>
+            </div>
+
+            <div class="atlui_form_section atlui_form_verification_success atlui_hidden">
+                <div class="atlui_form_title col_full_width col_center">
+                    <svg class="atlui_lead_checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="atlui_lead_checkmark__circle" cx="26" cy="26" r="25" fill="none" /><path class="atlui_lead_checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" /></svg>
+                </div>
+            </div>
+
+            <div class="atlui_form_section atlui_form_verification_success atlui_hidden">
+                <div class="altui_description col_full_width col_center">
+                    Ihr Auftrag wurde erfolgreich entgegengenommen.
+                </div>
+            </div>
+            
+            <div class="atlui_form_section atlui_form_verification_start">
+                <div class="atlui_form_title col_full_width col_center">SMS Bestätigung</div>
+            </div>
+
+            <div class="atlui_form_section atlui_form_verification_start">
+                <div class="altui_description col_full_width col_center">
+                    Bitte helfen Sie uns die Qualität unserer Anfragen zu verbessern, <br>indem Sie die angegebene Telefonnummer bestätigen.
+                </div>
+            </div>
+            
+            <div class="atlui_form_section atlui_form_verification_start">
+                <div class="col_full_width col_center">
+                    <label for="n0">Bestätigungscode</label>
+                    <div class="atlui_verification_fields">
+                        <input class="atlui_verification_input" type="text" name="n0" id="n0" maxlength="1" >
+                        <input class="atlui_verification_input" type="text" name="n1" id="n1" maxlength="1">
+                        <input class="atlui_verification_input" type="text" name="n2" id="n2" maxlength="1">
+                        <input class="atlui_verification_input" type="text" name="n3" id="n3" maxlength="1">
+                    </div>
+                    <span class="atlui_span_validation_error atlui_hidden" id="atlui_code_invalid">Bitte geben Sie den gültigen Bestätigungscode ein.</span>
+                    <span class="atlui_span_validation_error atlui_hidden" id="atlui_no_token">Keine Auftragsidentifikation möglich.</span>
+                    <span class="atlui_span_validation_error atlui_hidden" id="atlui_token_invalid">Token ist ungültig.</span>
+                </div>
+            </div>
+            <div class="atlui_form_section_last atlui_form_section atlui_form_verification_start">
+                <div class="col_full_width col_center">
+                    <button class="atlui_block button atlui_button w100" type="submit" id="atlui_btn_submit">Telefonnummer bestätigen</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- javascript -->

@@ -1,0 +1,29 @@
+.twofa-body {
+  margin: 0;
+  padding: 0;
+  background: #f7f9fc;
+  font-family: sans-serif;
+}
+
+.twofa-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.twofa-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.twofa-heading {
+  margin-top: 0;
+  font-size: 1.5rem;
+  text-align: center;
+}

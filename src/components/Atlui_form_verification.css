@@ -1,0 +1,212 @@
+:root {
+  --atlui-blue: #1d92df;
+  --atlui-blue-alpha: rgba(29, 146, 223, .25);
+  --atlui-blue-alpha-btn: rgba(29, 146, 223, .75);
+  --atlui-red: #db2222;
+  --atlui-red-alpha: rgba(219, 34, 34, .25);
+  --atlui-black: #0a0a0a;
+}
+
+/* ========== Grundstruktur ========== */
+.atlui_container_verification {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Roboto, sans-serif;
+  padding: 0 20px;
+}
+
+.atlui_container_verification * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.35;
+}
+
+/* ========== Hilfsklassen ========== */
+.atlui_container_verification .atlui_hidden {
+  display: none !important;
+}
+
+.atlui_container_verification .atlui_block {
+  display: block;
+}
+
+.atlui_container_verification .col_center {
+  text-align: center;
+}
+
+.atlui_container_verification .w100 {
+  width: 100%;
+}
+
+/* ========== Formular-Wrapper & Layout ========== */
+.atlui_container_verification .atlui_form_wrapper {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #fff;
+  color: var(--atlui-black);
+  padding: 20px;
+}
+
+.atlui_container_verification .atlui_form {
+  width: 100%;
+}
+
+.atlui_container_verification .atlui_form_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  margin-bottom: 30px;
+}
+
+.atlui_container_verification .atlui_form_section_last {
+  margin-bottom: 5px;
+}
+
+.atlui_container_verification .col_full_width {
+  grid-column: 1 / 3;
+}
+
+.atlui_container_verification .atlui_form_title {
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.atlui_container_verification .altui_description {
+  font-size: 0.9em;
+  text-align: center;
+  color: #5c5c5c;
+}
+
+/* ========== Inputs & Fehler ========== */
+.atlui_container_verification input[type="text"] {
+  width: 3rem;
+  height: 2.2em;
+  padding: 3px;
+  font-size: 1.1em;
+  border-radius: 2px;
+  border: 1px solid var(--atlui-blue);
+  background-color: var(--atlui-blue-alpha);
+  color: var(--atlui-black);
+  text-align: center;
+  margin: 0 5px;
+}
+
+.atlui_container_verification .atlui_verification_input {
+  width: 3rem;
+  height: 2rem;
+  margin: 0 5px;
+  text-align: center;
+}
+
+.atlui_container_verification .atlui_span_validation_error {
+  font-size: 0.85em;
+  color: var(--atlui-red);
+  display: block;
+  margin-top: 5px;
+}
+
+.atlui_container_verification .atlui_element_validation_error {
+  border: 1px solid var(--atlui-red) !important;
+  background-color: var(--atlui-red-alpha) !important;
+}
+
+/* ========== Button ========== */
+.atlui_container_verification button {
+  background: var(--atlui-blue);
+  color: #fff;
+  padding: 9px 18px;
+  font-size: 1em;
+  border: none;
+  border-radius: 2px;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* ========== Checkmark (Erfolg) ========== */
+.atlui_container_verification .atlui_lead_checkmark {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: var(--atlui-blue);
+  box-shadow: inset 0px 0px 0px var(--atlui-blue);
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  margin: 0 auto 20px auto;
+}
+
+.atlui_container_verification .atlui_lead_checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke: var(--atlui-blue);
+  fill: #fff;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.atlui_container_verification .atlui_lead_checkmark__check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  transform-origin: 50% 50%;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+/* ========== Keyframe Animationen ========== */
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px var(--atlui-blue);
+  }
+}
+
+/* ========== Responsive Anpassungen ========== */
+@media (max-width: 768px) {
+  .atlui_container_verification {
+    padding: 0 15px;
+  }
+
+  .atlui_container_verification .atlui_form_section {
+    grid-template-columns: 1fr !important;
+  }
+
+  .atlui_container_verification .col_full_width {
+    grid-column: 1 / 2 !important;
+  }
+
+  .atlui_container_verification .atlui_form_title {
+    font-size: 1.3em;
+  }
+
+  .atlui_container_verification .atlui_verification_input {
+    width: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .atlui_container_verification {
+    padding: 0 10px;
+  }
+
+  .atlui_container_verification .atlui_form_wrapper {
+    padding: 15px;
+  }
+
+  .atlui_container_verification .atlui_form_title {
+    font-size: 1.2em;
+  }
+}
