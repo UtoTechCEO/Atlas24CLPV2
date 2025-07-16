@@ -75,7 +75,7 @@
         submit_btn_enter_load();
 
         //Send lead validation request
-        let response = await fetch(`https://test.atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/`, {
+        let response = await fetch(`https://test.atlas24.ch/?rest_route=/atlas24-api/v1/verify_lead/`, {
 
             method: 'POST',
             headers: {
@@ -141,9 +141,3 @@
     window.addEventListener('DOMContentLoaded', init_form);
 
 }());
-
-fetch("https://test.atlas24.ch/?rest_route=/atlas24-api/v1/verify_lead/", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ token, code }),
-});
