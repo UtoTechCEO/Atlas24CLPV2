@@ -1,0 +1,28 @@
+---
+// src/layouts/BaseLayout.astro
+const { title = 'Atlas24 – Umzugsangebote vergleichen' } = Astro.props;
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Cookiebot -->
+    <script id="Cookiebot"
+      src="https://consent.cookiebot.com/uc.js"
+      data-cbid="decc716e-21fc-495c-8d28-ddbcfefa21df"
+      data-blockingmode="auto"
+      type="text/javascript"></script>
+
+    <!-- Platz für weitere Head-Scripts -->
+    <slot name="head" />
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>
