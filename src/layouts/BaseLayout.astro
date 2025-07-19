@@ -9,12 +9,23 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
 
+
+
+
+
     <!-- Cookiebot -->
     <script id="Cookiebot"
             src="https://consent.cookiebot.com/uc.js"
             data-cbid="decc716e-21fc-495c-8d28-ddbcfefa21df"
             data-blockingmode="auto"
             type="text/javascript"></script>
+
+            <!-- Wenn Cookiebot schon Consent kennt → Tracking sofort aktivieren -->
+    <script>
+  if (window.Cookiebot?.consents?.marketing) {
+    window.dispatchEvent(new Event("CookieConsentDeclaration"));
+  }
+</script>
 
     <!-- Google Consent Mode v2 – default settings -->
     <script data-cookieconsent="ignore">
