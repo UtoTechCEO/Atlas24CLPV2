@@ -1,6 +1,6 @@
 ---
 // pages/index.astro
-import baselayout from "../layouts/baselayout.astro";
+import Baselayout from "../layouts/Baselayout.astro";
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
@@ -8,7 +8,7 @@ import Howto from "../components/Howto.astro";
 import Usp from "../components/Usp.astro";
 ---
 
-<baselayout title="Atlas24 – Umzugsangebote vergleichen">
+<Baselayout title="Atlas24 – Umzugsangebote vergleichen">
   <Header />
   <Hero />
   <Howto />
@@ -20,4 +20,4 @@ import Usp from "../components/Usp.astro";
     data-cookieconsent="functionality"
     src="/assets/atlui_form_verification.js">
   </script>
-</baselayout>
+</Baselayout>
