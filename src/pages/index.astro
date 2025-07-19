@@ -6,18 +6,18 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Howto from "../components/Howto.astro";
 import Usp from "../components/Usp.astro";
+layout: Baselayout
+title: "Atlas24 – Umzugsangebote vergleichen"
 ---
 
-<Baselayout title="Atlas24 – Umzugsangebote vergleichen">
-  <Header />
-  <Hero />
-  <Howto />
-  <Usp />
+<Header />
+<Hero />
+<Howto />
+<Usp />
 
-  <!-- JS wird von Cookiebot nur geladen, wenn Funktionalität erlaubt -->
-  <script 
-    type="text/plain"
-    data-cookieconsent="functionality"
-    src="/assets/atlui_form_verification.js">
-  </script>
-</Baselayout>
+<!-- JS wird von Cookiebot nur geladen, wenn Funktionalität erlaubt -->
+<script 
+  type="text/plain"
+  data-cookieconsent="functionality"
+  src="/assets/atlui_form_verification.js">
+</script>
