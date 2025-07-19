@@ -11,6 +11,24 @@ import "../components/2fa.css";
     <title>SMS bestätigen – Atlas24</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17057503111');
+</script>
+
+<script>
+  gtag('event', 'conversion', {
+    send_to: 'AW-17057503111',
+    value: 200,
+    currency: 'CHF'
+  });
+</script>
+
   </head>
 
   <body class="twofa-body">
