@@ -10,15 +10,98 @@ const { title } = Astro.props;
     <title>{title}</title>
 
 
-    <!-- Microsoft Clarity – direkt laden (CH-konform) -->
+
+
+
+    <!-- Cookiebot -->
+    <script id="Cookiebot"
+            src="https://consent.cookiebot.com/uc.js"
+            data-cbid="decc716e-21fc-495c-8d28-ddbcfefa21df"
+            data-blockingmode="auto"
+            type="text/javascript"></script>
+
+            <!-- Wenn Cookiebot schon Consent kennt → Tracking sofort aktivieren -->
     <script>
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "qbxet7g0ua");
+  if (window.Cookiebot?.consents?.marketing) {
+    window.dispatchEvent(new Event("CookieConsentDeclaration"));
+  }
 </script>
 
+    <!-- Google Consent Mode v2 – default settings -->
+    <script data-cookieconsent="ignore">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+
+      gtag("consent", "default", {
+        ad_personalization: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500
+      });
+
+      gtag("set", "ads_data_redaction", true);
+      gtag("set", "url_passthrough", false);
+    </script>
+
+    <!-- Consent update bei Cookie-Einwilligung -->
+    <script>
+      window.addEventListener('CookieConsentDeclaration', function () {
+        if (window.gtag && window.Cookiebot && Cookiebot.consents) {
+          gtag("consent", "update", {
+            ad_storage: Cookiebot.consents.marketing ? "granted" : "denied",
+            ad_user_data: Cookiebot.consents.marketing ? "granted" : "denied",
+            ad_personalization: Cookiebot.consents.marketing ? "granted" : "denied",
+            analytics_storage: Cookiebot.consents.statistics ? "granted" : "denied",
+            functionality_storage: Cookiebot.consents.preferences ? "granted" : "denied",
+            personalization_storage: Cookiebot.consents.preferences ? "granted" : "denied",
+            security_storage: "granted"
+          });
+        }
+      });
+    </script>
+
+    <!-- Google Tag (gtag.js) – nur bei Consent laden -->
+    <script>
+      window.addEventListener('CookieConsentDeclaration', function () {
+        if (window.Cookiebot?.consents?.marketing) {
+          const s = document.createElement("script");
+          s.src = "https://www.googletagmanager.com/gtag/js?id=AW-17057503111";
+          s.async = true;
+          document.head.appendChild(s);
+
+          s.onload = () => {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+
+            gtag('js', new Date());
+            gtag('config', 'G-0XGGB6GEL6', { anonymize_ip: true }); // GA4
+            gtag('config', 'AW-17057503111'); // Google Ads
+
+            // Conversion Tracking bei Bestätigungsseite
+            if (window.location.pathname === "/validate_phone_number/") {
+              gtag('event', 'conversion', {
+                send_to: 'AW-17057503111',
+                value: 200,
+                currency: 'CHF'
+              });
+            }
+          };
+        }
+      });
+    </script>
+
+    <!-- Microsoft Clarity – direkt laden (CH-konform) -->
+    <script>
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "qbxet7g0ua");
+    </script>
 
   </head>
   <body>
