@@ -1,5 +1,5 @@
 .usp-section {
-  background-color: #f5f7fa;
+  background-color: #f7faff;
   padding: 4rem 1rem;
 }
 
@@ -23,8 +23,10 @@
 }
 
 .usp-image img {
-  max-width: 120px;
+  max-width: 256px;
   height: auto;
+  border-radius: 8px;
+  
 }
 
 .usp-text h3 {
@@ -37,6 +39,23 @@
   font-size: 1rem;
   color: #333;
   line-height: 1.6;
+}
+.usp-title {
+  font-size: 1.5rem;
+  color: #002093;
+  margin-bottom: 0.5rem;
+}
+
+.usp-subtitle{
+  font-size: 1.2rem;
+  color: #1d92df;
+  margin-bottom: 0.5rem; 
+}
+
+.usp-description{
+  font-size: 1.0rem;
+  color: #1d92df;
+  margin-bottom: 0.5rem; 
 }
 
 /* Mobile */

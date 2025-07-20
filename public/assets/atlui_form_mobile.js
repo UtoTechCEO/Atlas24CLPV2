@@ -86,6 +86,12 @@
         }
     });
 
+// Nur beim Wechsel zu Schritt 3 scrollen
+if (view_index === 3) {
+    document.querySelector('.atlui_form_wrapper')?.scrollIntoView({ behavior: 'smooth' });
+}
+
+
     const progressbar = document.querySelector('.atlui_progress_container');
     if (progressbar) {
         if (view_index === 1) {
@@ -116,6 +122,7 @@ function init_pagination() {
             }
         }
     });
+
 
     btn_back.addEventListener('click', (e) => {
         if ((view_index - 1) >= start_index) {
