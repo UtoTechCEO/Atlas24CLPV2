@@ -1,0 +1,53 @@
+.trust-section {
+  padding: 3rem 1.5rem;
+  background: #f7faff;
+  text-align: center;
+}
+
+.trust-subtitle {
+  font-size: 1rem;
+  color: #1d92df;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.trust-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #002093;
+}
+
+.trust-stars {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #ffaa00;
+}
+
+.trust-stars span {
+  color: #333;
+  margin-left: 0.5rem;
+}
+
+.trust-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.trust-logos img {
+  max-height: 290px;
+  opacity: 0.9;
+  border-radius: 12px; /* Bildrundung */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* weicher Schatten */
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.trust-logos img:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15); /* intensiverer Hover-Schatten */
+}

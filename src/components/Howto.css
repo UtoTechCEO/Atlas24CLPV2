@@ -1,6 +1,8 @@
 .howto-section {
-  padding: 60px 20px;
-  background-color: #f8faff;
+  padding: 80px 20px;
+  background-color: #f0f6ff;
+  position: relative;
+  overflow: hidden;
 }
 
 .howto-container {
@@ -9,17 +11,18 @@
   text-align: center;
 }
 
-.howto-title {  
-  font-size: clamp(1.6rem, 4vw, 2.5rem);
+.howto-title {
+   font-size: 1.5rem;
   font-weight: bold;
   color: #002093;
   margin-bottom: 10px;
 }
 
 .howto-subline {
-  font-size: 1.1em;
-  color: #3a3a3a;
-  margin-bottom: 40px;
+  font-size: 1rem;
+  color: #1d92df;
+  margin-bottom: 50px;
+  font-weight: 600;
 }
 
 .howto-steps {
@@ -31,35 +34,48 @@
 
 .howto-step {
   background: white;
-  border-radius: 16px;
-  padding: 30px;
-  width: 280px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease;
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 340px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 0.8s ease forwards;
 }
 
-.howto-step:hover {
-  transform: translateY(-5px);
+.howto-step:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.howto-step:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .howto-step-number {
-  font-size: 2.5em;
+  font-size: 2.8em;
   color: #1d92df;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .howto-step-title {
-  font-size: 1.2em;
-  font-weight: 600;
+  font-size: 1.3em;
+  font-weight: 700;
   color: #002093;
   margin-bottom: 10px;
 }
 
 .howto-step-text {
-  font-size: 0.95em;
+  font-size: 1em;
   color: #333;
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
 /* Mobile Optimierung */
@@ -76,14 +92,14 @@
 
 @media (max-width: 500px) {
   .howto-section {
-    padding: 40px 10px;
+    padding: 60px 10px;
   }
 
   .howto-step {
-    padding: 20px;
+    padding: 30px 20px;
   }
 
   .howto-step-number {
-    font-size: 2em;
+    font-size: 2.2em;
   }
 }
