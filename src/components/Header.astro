@@ -1,17 +1,21 @@
 ---
 import "./Header.css";
-
 ---
-
 <header class="atlui_header">
   <div class="atlui_header_inner">
-    <a href="https://atlas24.ch" class="flex items-center">
-      <img src="/images/Logo_complete.webp" alt="Atlas24 Logo" class="atlui_logo" loading="lazy" />
+    <a href="https://atlas24.ch" class="atlui_logo_link">
+      <img
+        src="/images/Logo_complete.webp"
+        alt="Atlas24 Logo"
+        class="atlui_logo"
+        loading="eager"
+        fetchpriority="high"
+        
+      />
     </a>
-    <nav class="atlui_nav">
-  <span>Nur geprüfte Unternehmen</span>
-  <span>Bis zu 40% sparen</span>
-</nav>
-
+    <div class="atlui_nav">
+      <span class="atlui_nav_item">Nur geprüfte Unternehmen</span>
+      <span class="atlui_nav_item">Bis zu 40 % sparen</span>
+    </div>
   </div>
 </header>
