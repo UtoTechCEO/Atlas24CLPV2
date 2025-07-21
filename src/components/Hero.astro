@@ -26,7 +26,19 @@ import AtluiFormOfferMobile from "./form-ui/AtluiFormOfferMobile.astro";
     </div>
 
     <div class="hero-image">
-      <img src="/images/Atlas_Mobile_Couple.webp" alt="Paar beim Umzug" loading="eager" fetchpriority="high" />
+      <img
+  src="/images/Atlas_Mobile_Couple_640W.webp"
+  srcset="
+    /images/Atlas_Mobile_Couple_320W.webp 320w,
+    /images/Atlas_Mobile_Couple_480W.webp 480w,
+    /images/Atlas_Mobile_Couple_640W.webp 640w,
+    /images/Atlas_Mobile_Couple_800W.webp 800w
+  "
+  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 800px"
+  alt="Paar beim Umzug"
+  loading="eager"
+  fetchpriority="high"
+/>
     </div>
   </div>
 </section>
