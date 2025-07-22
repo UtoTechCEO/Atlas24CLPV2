@@ -14,6 +14,10 @@
 
 .hero-text {
   text-align: center;
+  .hero-text {
+  min-height: 180px; /* oder je nach Design */
+}
+
 }
 
 .hero-title {
