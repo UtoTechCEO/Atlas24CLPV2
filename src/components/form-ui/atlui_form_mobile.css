@@ -79,6 +79,8 @@ button.atlui_button_submit {
   padding: 10px;
   font-size: 0.9em;
   color: #555;
+  margin-top: 10px;
+  border-radius: 7.5px;
 }
 
 .agb-hinweis a {
