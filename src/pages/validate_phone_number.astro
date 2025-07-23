@@ -3,7 +3,6 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import AtluiFormVerification from "../components/AtluiFormVerification.astro";
 import "../components/2fa.css";
-
 ---
 
 <html lang="de">
@@ -37,16 +36,13 @@ import "../components/2fa.css";
     <Header />
 
     <main class="twofa-main">
-  <section class="twofa-card-2">
-    
-    
-    
-    <AtluiFormVerification />
-    
-  </section>
-</main>
-<script src="/assets/atlui_form_verification.js" defer></script>
-
+      <section class="twofa-container">
+        <h1 class="twofa-heading">SMS-Bestätigung</h1>
+        <AtluiFormVerification />
+        <div id="two-fa-feedback"></div>
+      </section>
+    </main>
   </body>
 </html>
 
+<script src="/assets/atlui_form_verification.js" defer></script>
