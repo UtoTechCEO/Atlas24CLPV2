@@ -126,7 +126,7 @@
         //Setup keyup-handlers for the phone verification form (if available)
         const inputs = document.querySelectorAll('.atlui_verification_fields > input');
         inputs.forEach((elem) => {
-            elem.addEventListener('input', focus_next_elem);
+            elem.addEventListener('keyup', focus_next_elem);
         });
 
         //Add a paste-handler to the first input and focus it
