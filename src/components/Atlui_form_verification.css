@@ -14,6 +14,7 @@
   margin: 0 auto;
   font-family: Roboto, sans-serif;
   padding: 0 20px;
+  
 }
 
 .atlui_container_verification * {
@@ -21,6 +22,7 @@
   margin: 0;
   padding: 0;
   line-height: 1.35;
+  border-radius: 15px;
 }
 
 /* ========== Hilfsklassen ========== */
@@ -92,6 +94,8 @@
   color: var(--atlui-black);
   text-align: center;
   margin: 0 5px;
+  margin-top: 10px;
+  border-radius: 7.5px;
 }
 
 .atlui_container_verification .atlui_verification_input {
@@ -124,6 +128,7 @@
   width: 100%;
   cursor: pointer;
   margin-top: 10px;
+  border-radius: 7.5px;
 }
 
 /* ========== Checkmark (Erfolg) ========== */
