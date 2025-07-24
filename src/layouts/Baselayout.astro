@@ -39,65 +39,55 @@ const { title } = Astro.props;
     </script>
 
     <!-- Consent Mode Update bei Zustimmung -->
-    <script is:inline>
-      window.addEventListener('CookieConsentDeclaration', function () {
-        if (window.gtag && window.Cookiebot?.consents) {
-          gtag("consent", "update", {
-            ad_storage: Cookiebot.consents.marketing ? "granted" : "denied",
-            ad_user_data: Cookiebot.consents.marketing ? "granted" : "denied",
-            ad_personalization: Cookiebot.consents.marketing ? "granted" : "denied",
-            analytics_storage: Cookiebot.consents.statistics ? "granted" : "denied",
-            functionality_storage: Cookiebot.consents.preferences ? "granted" : "denied",
-            personalization_storage: Cookiebot.consents.preferences ? "granted" : "denied",
-            security_storage: "granted"
-          });
-        }
-      });
-    </script>
-
-    <!-- gtag.js dynamisch laden, sofort & bei Consent -->
 <script is:inline>
-  function initGtag() {
-    if (window.Cookiebot?.consents?.marketing) {
-      console.log("[gtag] Lade gtag.js...");
-
-      const s = document.createElement("script");
-      s.src = "https://www.googletagmanager.com/gtag/js?id=AW-17057503111";
-      s.async = true;
-      document.head.appendChild(s);
-
-      s.onload = () => {
-        console.log("[gtag] Script geladen");
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function () { dataLayer.push(arguments); };
-
-        gtag('js', new Date());
-        gtag('config', 'G-0XGGB6GEL6', { anonymize_ip: true });
-        gtag('config', 'AW-17057503111');
-
-        if (window.location.pathname === "/validate_phone_number/") {
-          console.log("[gtag] Conversion Event wird ausgelöst");
-          gtag('event', 'conversion', {
-            send_to: 'AW-17057503111',
-            value: 200,
-            currency: 'CHF'
-          });
-        }
-      };
-    } else {
-      console.warn("[gtag] Marketing NICHT erlaubt – Tag wird nicht geladen.");
+  function loadGtag() {
+    if (!window.Cookiebot || !window.Cookiebot.consents?.marketing) {
+      console.warn("[gtag] Kein Consent für Marketing – gtag.js wird nicht geladen");
+      return;
     }
+
+    console.log("[gtag] Consent vorhanden – gtag.js wird geladen");
+
+    const s = document.createElement("script");
+    s.src = "https://www.googletagmanager.com/gtag/js?id=AW-17057503111";
+    s.async = true;
+    document.head.appendChild(s);
+
+    s.onload = () => {
+      console.log("[gtag] gtag.js geladen");
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+
+      gtag('js', new Date());
+      gtag('config', 'G-0XGGB6GEL6', { anonymize_ip: true });
+      gtag('config', 'AW-17057503111');
+
+      if (window.location.pathname === "/validate_phone_number/") {
+        gtag('event', 'conversion', {
+          send_to: 'AW-17057503111',
+          value: 200,
+          currency: 'CHF'
+        });
+        console.log("[gtag] Conversion Event ausgelöst");
+      }
+    };
   }
 
-  // Direkt beim Laden prüfen (wenn Consent bereits gesetzt ist)
-  window.addEventListener("load", () => {
-    if (window.Cookiebot?.consents) {
-      initGtag();
+  // Consent sofort prüfen, wenn schon gesetzt
+  window.addEventListener("CookiebotOnLoad", () => {
+    console.log("[Cookiebot] geladen");
+    if (window.Cookiebot.consents?.marketing) {
+      loadGtag();
     }
   });
 
-  // Zusätzlich bei Consent-Zustimmung neu ausführen
-  window.addEventListener("CookieConsentDeclaration", initGtag);
+  // Fallback: explizit auf Declaration warten (für neue Besucher)
+  window.addEventListener("CookieConsentDeclaration", () => {
+    console.log("[Cookiebot] Declaration Event");
+    if (window.Cookiebot.consents?.marketing) {
+      loadGtag();
+    }
+  });
 </script>
 
 
