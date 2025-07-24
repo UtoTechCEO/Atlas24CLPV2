@@ -55,39 +55,54 @@ const { title } = Astro.props;
       });
     </script>
 
-    <!-- gtag.js dynamisch nach Consent laden -->
-    <script is:inline>
-      window.addEventListener('CookieConsentDeclaration', function () {
-        if (window.Cookiebot?.consents?.marketing) {
-          const s = document.createElement("script");
-          s.src = "https://www.googletagmanager.com/gtag/js?id=AW-17057503111";
-          s.async = true;
-          document.head.appendChild(s);
+    <!-- gtag.js dynamisch laden, sofort & bei Consent -->
+<script is:inline>
+  function initGtag() {
+    if (window.Cookiebot?.consents?.marketing) {
+      console.log("[gtag] Lade gtag.js...");
 
-          s.onload = () => {
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = function() { dataLayer.push(arguments); }
+      const s = document.createElement("script");
+      s.src = "https://www.googletagmanager.com/gtag/js?id=AW-17057503111";
+      s.async = true;
+      document.head.appendChild(s);
 
+      s.onload = () => {
+        console.log("[gtag] Script geladen");
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { dataLayer.push(arguments); };
 
-            gtag('js', new Date());
-            gtag('config', 'G-0XGGB6GEL6', { anonymize_ip: true }); // GA4
-            gtag('config', 'AW-17057503111'); // Google Ads
+        gtag('js', new Date());
+        gtag('config', 'G-0XGGB6GEL6', { anonymize_ip: true });
+        gtag('config', 'AW-17057503111');
 
-            // Conversion Event bei Erfolgsseite
-            if (window.location.pathname === "/validate_phone_number/") {
-              gtag('event', 'conversion', {
-                send_to: 'AW-17057503111',
-                value: 200,
-                currency: 'CHF'
-              });
-            }
-          };
+        if (window.location.pathname === "/validate_phone_number/") {
+          console.log("[gtag] Conversion Event wird ausgelöst");
+          gtag('event', 'conversion', {
+            send_to: 'AW-17057503111',
+            value: 200,
+            currency: 'CHF'
+          });
         }
-      });
-    </script>
+      };
+    } else {
+      console.warn("[gtag] Marketing NICHT erlaubt – Tag wird nicht geladen.");
+    }
+  }
+
+  // Direkt beim Laden prüfen (wenn Consent bereits gesetzt ist)
+  window.addEventListener("load", () => {
+    if (window.Cookiebot?.consents) {
+      initGtag();
+    }
+  });
+
+  // Zusätzlich bei Consent-Zustimmung neu ausführen
+  window.addEventListener("CookieConsentDeclaration", initGtag);
+</script>
+
 
     <!-- Microsoft Clarity (CH-konform, kein Consent nötig) -->
-    <script>
+    <script is:inline>
       (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
