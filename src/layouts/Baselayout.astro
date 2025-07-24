@@ -66,7 +66,8 @@ const { title } = Astro.props;
 
           s.onload = () => {
             window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
+            window.gtag = function() { dataLayer.push(arguments); }
+
 
             gtag('js', new Date());
             gtag('config', 'G-0XGGB6GEL6', { anonymize_ip: true }); // GA4
