@@ -9,7 +9,7 @@ const { title } = Astro.props;
     <title>{title}</title>
 
     <!-- Cookiebot: Auto Blocking -->
-    <script
+    <script is:inline
       id="Cookiebot"
       src="https://consent.cookiebot.com/uc.js"
       data-cbid="decc716e-21fc-495c-8d28-ddbcfefa21df"
@@ -38,7 +38,7 @@ const { title } = Astro.props;
     </script>
 
     <!-- Consent Mode Update bei Zustimmung -->
-    <script>
+    <script is:inline>
       window.addEventListener('CookieConsentDeclaration', function () {
         if (window.gtag && window.Cookiebot?.consents) {
           gtag("consent", "update", {
