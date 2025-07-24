@@ -20,7 +20,8 @@ const { title } = Astro.props;
     <!-- Consent Mode v2 – Default Settings -->
     <script data-cookieconsent="ignore">
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
+      window.gtag = function () { dataLayer.push(arguments); }
+
 
       gtag("consent", "default", {
         ad_personalization: "denied",
