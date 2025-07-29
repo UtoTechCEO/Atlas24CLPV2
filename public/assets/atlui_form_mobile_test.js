@@ -152,7 +152,7 @@ function init_pagination() {
         submit_btn.innerText = btn_txt;
     };
 
-    /* ====== Form submission (Adapted for Prod-DB API Endpoint) ====== */
+    /* ====== Form submission (Adapted for Test-DB API Endpoint) ====== */
     async function submit_form(e) {
         e.preventDefault();
 
@@ -164,8 +164,8 @@ function init_pagination() {
             submit_btn_enter_load();
             const form_data = new FormData(e.target);
 
-            let obj_entries = Object.fromEntries(form_data.entries()); //statisch mit Prod verknüpft
-            let response = await fetch(`https://atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/`, {
+            let obj_entries = Object.fromEntries(form_data.entries()); //statisch mit Testverknüpft
+            let response = await fetch(`https://test.atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/`, {
 
                 method: 'POST',
                 headers: {
