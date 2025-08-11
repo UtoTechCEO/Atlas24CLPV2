@@ -116,3 +116,13 @@
     font-size: 1rem; /* etwas kleiner auf Mobile */
   }
 }
+
+.hero-microcopy{
+  text-align: left;
+ position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  font-size: 0.8rem;
+  color: #27ae60;
+  font-weight: 200;
+}

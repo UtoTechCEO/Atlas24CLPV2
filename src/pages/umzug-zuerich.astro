@@ -1,0 +1,37 @@
+---
+// pages/umzug-zuerich.astro
+
+export const prerender = true;
+
+import Baselayout from "../layouts/Baselayout.astro";
+import "../styles/global.css";
+import Header_Umzug_Zuerich from "../components/Header_Umzug_Zuerich.astro";
+import Hero_Umzug_Zuerich from "../components/Hero_Umzug_Zuerich.astro";
+import Howto  from "../components/Howto.astro";
+import Trust_Umzug_Zuerich  from "../components/Trust_Umzug_Zuerich.astro";
+import Usp from "../components/Usp.astro";
+import Stickycta from "../components/Stickycta.astro";
+import Footer from "../components/Footer.astro";
+
+/* SEO */
+const title = "Umzug Zürich – Gratis Offerten in 2 Min | Atlas24";
+const description =
+  "Umzug in Zürich? Geprüfte Anbieter, transparente Preise. Jetzt gratis Offerten vergleichen.";
+const canonical = "https://atlas24.ch/umzug-zuerich/";
+---
+
+<Baselayout {title} {description} {canonical}>
+  <Header_Umzug_Zuerich />
+  <Hero_Umzug_Zuerich />
+  <Trust_Umzug_Zuerich  />
+  <Stickycta />
+  <Howto />
+  <Usp />
+  <Footer />
+  
+  <script 
+    type="text/plain"
+    data-cookieconsent="functionality"
+    src="/assets/atlui_form_verification.js">
+  </script>
+</Baselayout>
