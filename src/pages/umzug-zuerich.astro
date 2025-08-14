@@ -18,9 +18,21 @@ const title = "Umzug Zürich – Gratis Offerten in 2 Min | Atlas24";
 const description =
   "Umzug in Zürich? Geprüfte Anbieter, transparente Preise. Jetzt gratis Offerten vergleichen.";
 const canonical = "https://atlas24.ch/umzug-zuerich/";
+
+
+
 ---
 
 <Baselayout {title} {description} {canonical}>
+  {/* HEAD slot: LCP image preload */}
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href="/images/Atlas_Mobile_Couple_640W.webp"
+      imagesrcset="/images/Atlas_Mobile_Couple_320W.webp 320w, /images/Atlas_Mobile_Couple_480W.webp 480w, /images/Atlas_Mobile_Couple_640W.webp 640w, /images/Atlas_Mobile_Couple_800W.webp 800w"
+      imagesizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 800px"
+    />
   <Header_Umzug_Zuerich />
   <Hero_Umzug_Zuerich />
   <Trust_Umzug_Zuerich  />

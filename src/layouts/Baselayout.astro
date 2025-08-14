@@ -2,7 +2,7 @@
 // layouts/Baselayout.astro
 const { title, description, canonical } = Astro.props;
 ---
-<html lang="de">
+<html lang="de-CH">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +10,18 @@ const { title, description, canonical } = Astro.props;
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     {canonical && <link rel="canonical" href={canonical} />}
+
+    <!-- Performance hints -->
+
+    <link rel="preconnect" href="https://consent.cookiebot.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://www.clarity.ms" crossorigin>
+
+    <!-- Seiten-spezifische Head-Inhalte (hier kommt das Preload aus der Seite rein) -->
+    <slot name="head" />
+
+    <!-- Formular-Logik: schnell, aber nicht render-blockend -->
+    <script src="/assets/atlui_form_mobile.js" defer data-cookieconsent="functionality"></script>
 
     <!-- Cookiebot: Auto Blocking -->
     <script 
@@ -146,9 +158,69 @@ const { title, description, canonical } = Astro.props;
 <link rel="icon" href="/images/favicon.png" type="image/png" />
 
 
+
+
   </head>
 
   <body>
+
     <slot />
+
+    <script is:inline>
+(function () {
+  let mapsPromise = null;
+
+  function haveConsent() {
+    try {
+      // Für Autocomplete reicht i.d.R. "functionality".
+      return !window.Cookiebot || (Cookiebot.consents && Cookiebot.consents.functionality);
+    } catch (e) { return true; }
+  }
+
+  function loadMapsOnce() {
+    if (window._mapsLoaded) return Promise.resolve();
+    if (mapsPromise) return mapsPromise;
+
+    mapsPromise = new Promise((resolve, reject) => {
+      if (!haveConsent()) {
+        console.warn('[Maps] Kein (funktionaler) Consent – Maps werden nicht geladen.');
+        return reject(new Error('No consent'));
+      }
+
+      // Falls ATLUI_GLOBALS noch nicht existiert, Stub bereitstellen
+      window.ATLUI_GLOBALS = window.ATLUI_GLOBALS || { init_places: function () {} };
+
+      const s = document.createElement('script');
+      s.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBVdRCngXIz2iJbQluDmu6zWNIEc-rhfR8&libraries=places&callback=ATLUI_GLOBALS.init_places";
+      s.async = true;
+      s.onload = () => { window._mapsLoaded = true; resolve(); };
+      s.onerror = (e) => { console.error('[Maps] Ladefehler', e); reject(e); };
+      document.head.appendChild(s);
+    });
+
+    return mapsPromise;
+  }
+
+  // 1) Laden, sobald Schritt 2 sichtbar wird
+  const mo = new MutationObserver(() => {
+    const step2 = document.querySelector('[data-step-index="2"]');
+    if (step2 && !step2.classList.contains('atlui_hidden')) {
+      mo.disconnect();
+      loadMapsOnce();
+    }
+  });
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+
+  // 2) Alternativ/zusätzlich: Laden bei Fokus auf Adressfelder
+  const addressIds = new Set(['MoveFromAddrStreet','MoveToAddrStreet','MoveFromAddrCity','MoveToAddrCity']);
+  document.addEventListener('focusin', (e) => {
+    if (e.target && addressIds.has(e.target.id)) loadMapsOnce();
+  });
+
+  // Optional: manuell von irgendwo triggern
+  window.ATLUI_LOAD_MAPS = loadMapsOnce;
+})();
+</script>
+
   </body>
 </html>
