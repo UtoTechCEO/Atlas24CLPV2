@@ -145,8 +145,9 @@ button.atlui_button_submit {
 
 .atlui_form_section[data-step-index="2"] label[for="Service"] {
     margin-top: 5px;
-	margin-bottom: -15px;
+	  margin-bottom: -15px;
     display: inline-block; /* wichtig für margin-top wirksamkeit */
+    font-size: medium;
 }
 
 label[for="MoveFromAddrZip"] {
@@ -233,4 +234,10 @@ button.atlui_button_submit {
     text-align: left;
     color:#1d92df;
     white-space: nowrap;
+ }
+
+ .addiional-services{
+  margin-top: -15px;
+  margin-bottom: 15px;
+  color: #888;
  }
