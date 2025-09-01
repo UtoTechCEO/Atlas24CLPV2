@@ -1,0 +1,51 @@
+---
+import "./Hero.css";
+import AtluiFormOfferMobile from "./form-ui/AtluiFormOfferMobile.astro";
+---
+
+<section id="hero" class="hero-section">
+  <div class="hero-container">
+    <div class="hero-text">
+      <!-- Keyword exakt im H1 -->
+      <h1 class="hero-title">Umzugsfirma in Zürich gesucht? – Jetzt 5 Offerten vergleichen</h1>
+
+      <!-- Ortsbezug + Nutzen klar & kurz -->
+      <p class="hero-subline">
+        Geprüfte Umzugsfirmen in Zürich. <strong>Gratis & unverbindlich</strong> – in <strong>2 Minuten</strong> Angebote erhalten und <strong>bis zu 40 %</strong> sparen.
+      </p>
+
+      <div class="hero-form">
+        <AtluiFormOfferMobile />
+        <!-- Microcopy: senkt Abbruchangst, hilft LP-Experience -->
+        <p class="hero-microcopy">
+          Dauert ca. 2&nbsp;Minuten · Keine Registrierung
+        </p>
+      </div>
+
+      <ul class="hero-usps">
+        <li>5 Offerten in 2 Minuten</li>
+        <li>Nur geprüfte Anbieter</li>
+        <li>Bis zu 40 % sparen</li>
+        <li>Lokale Firmen aus Zürich & Umgebung</li>
+      </ul>
+    </div>
+
+    <div class="hero-image">
+      <img
+        src="/images/Atlas_Mobile_Couple_640W.webp"
+        srcset="
+          /images/Atlas_Mobile_Couple_320W.webp 320w,
+          /images/Atlas_Mobile_Couple_480W.webp 480w,
+          /images/Atlas_Mobile_Couple_640W.webp 640w,
+          /images/Atlas_Mobile_Couple_800W.webp 800w
+        "
+        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 800px"
+        width="640"
+        height="400"
+        alt="Umzug in Zürich – Paar beim Umzug"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+</section>
