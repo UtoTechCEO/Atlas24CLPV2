@@ -16,7 +16,6 @@ import Footer from "../components/Footer.astro";
 
 
 
-
 /* SEO */
 const title = "Atlas24 – Umzugsangebote vergleichen";
 const description =
@@ -28,6 +27,8 @@ const canonical = "https://service.atlas24.ch/";
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 */
 ---
+    <!-- G-Verification -->
+    google-site-verification: google7f6c8e686eaf4c7e.html
 
 <Baselayout {title} {description} {canonical}>
   {/* HEAD slot: LCP image preload */}
