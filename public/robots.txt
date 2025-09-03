@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+Disallow: /validate_phone_number/
+Disallow: /form_flow/   
+
 Sitemap: https://service.atlas24.ch/sitemap-index.xml

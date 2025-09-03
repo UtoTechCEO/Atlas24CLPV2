@@ -22,7 +22,7 @@ const title = "Atlas24 – Umzugsangebote vergleichen";
 const description =
   "Vergleichen Sie geprüfte Umzugsfirmen in der Schweiz. Gratis & unverbindliche Offerten in 2 Minuten – transparent und schnell.";
 // Variante A: hart codiert
-const canonical = "https://atlas24.ch/";
+const canonical = "https://service.atlas24.ch/";
 
 /* Variante B (empfohlen), wenn in astro.config.mjs `site` gesetzt ist:
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -38,6 +38,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       href="/images/Atlas_Mobile_Couple_640W.webp"
       imagesrcset="/images/Atlas_Mobile_Couple_320W.webp 320w, /images/Atlas_Mobile_Couple_480W.webp 480w, /images/Atlas_Mobile_Couple_640W.webp 640w, /images/Atlas_Mobile_Couple_800W.webp 800w"
       imagesizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 800px"
+      fetchpriority="high"
+      
+      
     />
   </Fragment>
   <Header />
