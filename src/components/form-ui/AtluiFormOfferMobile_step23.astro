@@ -1,0 +1,351 @@
+---
+import "../form-ui/atlui_form.css";
+import "../form-ui/atlui_form_mobile.css";
+import "../form-ui/air-datepicker.css";
+---
+
+<div class="container">
+  <div class="atlui_form_wrapper">
+    <div class="atlui_progress_container">
+      <div class="atlui_progress_bar">
+        <div class="atlui_progress_bar atlui_progress_fill" id="progressFill" style="width: 50%;">50%</div>
+      </div>
+      <div class="step-label" id="stepLabel">Schritt 2 von 2</div>
+    </div>
+
+    <form class="atlui_form atlui_form_offer_mobile" id="form-step2-3">
+      <!-- ===== STEP 2 (sichtbar am Start) ===== -->
+      <div class="atlui_form_section" data-step-index="2" id="section-2">
+        <label class="w100 col_full_width" for="Service"><strong>Dienstleistung wählen</strong></label>
+        <div class="col_full_width">
+          <select class="w100 atlui_multiselect" name="Service" id="Service">
+            <option value="3">Umzug inkl. Reinigung</option>
+            <option value="1">Umzug</option>
+            <option value="2">Reinigung</option>
+          </select>
+        </div>
+        <div class="addiional-services w100 col_full_width">
+          <small>Weitere Wünsche wie Entsorgung, Lagerung etc. im nächsten Schritt unter „Bemerkungen“.</small>
+        </div>
+
+        <div class="col_full_width atlui_form_title" id="title_move_out_2">Am Auszugsort</div>
+        <div class="col_full_width">
+          <div class="col_full_width_mobile">
+            <label class="w100" for="MoveFromAddrStreet">Strasse/Nr.</label>
+            <input class="atlui_block w100" type="text" name="MoveFromAddrStreet" id="MoveFromAddrStreet"
+                   data-atlui-validation-method="contains_street_num"/>
+            <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine Strasse inkl. Nummer an.</span>
+          </div>
+
+          <label class="w100" for="MoveFromNumOfRooms">Anzahl Zimmer</label>
+          <select class="atlui_block w100" name="MoveFromNumOfRooms" id="MoveFromNumOfRooms">
+            <option value="1">1 Zimmer</option><option value="1.5">1.5 Zimmer</option>
+            <option value="2">2 Zimmer</option><option value="2.5">2.5 Zimmer</option>
+            <option value="3">3 Zimmer</option><option value="3.5">3.5 Zimmer</option>
+            <option value="4">4 Zimmer</option><option value="4.5" selected>4.5 Zimmer</option>
+            <option value="5">5 Zimmer</option><option value="5.5">5.5 Zimmer</option>
+            <option value="6">6 Zimmer</option><option value="6.5">6.5 Zimmer</option>
+            <option value="7">7 Zimmer</option><option value="7.5">7.5 Zimmer</option>
+            <option value="8">8 Zimmer</option><option value="8.5">Mehr als 8.5 Zimmer</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="w100" for="MoveFromFloor">Etage</label>
+          <select class="atlui_block w100" name="MoveFromFloor" id="MoveFromFloor">
+            <option value="UG">UG</option><option value="EG" selected>EG</option>
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+            <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+            <option value="13">13</option><option value="14">14</option><option value="15">15+</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="w100">Lift vorhanden?</label>
+          <div class="atlui_switch_field">
+            <input type="radio" name="MoveFromElevatorExists" id="MoveFromElevatorExistsYes" value="Ja" checked>
+            <label for="MoveFromElevatorExistsYes">Ja</label>
+            <input type="radio" name="MoveFromElevatorExists" id="MoveFromElevatorExistsNo" value="Nein">
+            <label for="MoveFromElevatorExistsNo">Nein</label>
+          </div>
+        </div>
+
+        <!-- Einzugsort (ausblendbar bei Reinigung) -->
+        <div class="col_full_width atlui_form_title atlui_hide_for_clean">Am Einzugsort</div>
+        <div class="col_full_width_mobile atlui_hide_for_clean">
+          <label class="w100" for="MoveToAddrStreet">Strasse/Nr.</label>
+          <input class="atlui_block w100" type="text" name="MoveToAddrStreet" id="MoveToAddrStreet"
+                 data-atlui-validation-method="contains_street_num"/>
+          <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine Strasse inkl. Nummer an.</span>
+        </div>
+        <div class="col_full_width_mobile atlui_hide_for_clean">
+          <label class="w100" for="MoveToAddrZip">Postleitzahl</label>
+          <input class="atlui_block w100" type="number" min="0" max="9999" name="MoveToAddrZip" id="MoveToAddrZip"
+                 data-atlui-validation-method="swiss_zip_code" onwheel="return false;"/>
+          <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine Postleitzahl an.</span>
+        </div>
+        <div class="atlui_hide_for_clean">
+          <label class="w100" for="MoveToFloor">Etage</label>
+          <select class="atlui_block w100" name="MoveToFloor" id="MoveToFloor">
+            <option value="UG">UG</option><option value="EG" selected>EG</option>
+            <option value="1">1</option><option value="2">2</option>…<option value="15">15+</option>
+          </select>
+        </div>
+        <div class="atlui_hide_for_clean">
+          <label class="w100">Lift vorhanden?</label>
+          <div class="atlui_switch_field">
+            <input type="radio" name="MoveToElevatorExists" id="MoveToElevatorExistsYes" value="Ja" checked>
+            <label for="MoveToElevatorExistsYes">Ja</label>
+            <input type="radio" name="MoveToElevatorExists" id="MoveToElevatorExistsNo" value="Nein">
+            <label for="MoveToElevatorExistsNo">Nein</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== STEP 3 (zuerst versteckt) ===== -->
+      <div class="atlui_form_section atlui_hidden" data-step-index="3" id="section-3">
+        <div class="step-label">Letzter Schritt, fast geschafft!</div>
+
+        <div class="col_full_width atlui_form_title">Personenbezogene Angaben</div>
+        <div class="col_full_width_mobile">
+          <label class="w100" for="FirstName">Vorname</label>
+          <input class="atlui_block w100" type="text" name="FirstName" id="FirstName"/>
+          <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie Ihren Vornamen an.</span>
+        </div>
+        <div class="col_full_width_mobile">
+          <label class="w100" for="LastName">Nachname</label>
+          <input class="atlui_block w100" type="text" name="LastName" id="LastName"/>
+          <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie Ihren Nachnamen an.</span>
+        </div>
+        <div class="col_full_width_mobile">
+          <label class="w100" for="Email">Email</label>
+          <input class="atlui_block w100" type="text" name="Email" id="Email" autocomplete="on"/>
+          <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie Ihre Emailadresse an.</span>
+        </div>
+        <div class="col_full_width_mobile">
+          <label class="w100" for="Phone">Telefonnummer (Mobil)</label>
+          <input class="atlui_block w100" type="text" name="Phone" id="Phone" autocomplete="on"/>
+          <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine gültige Schweizer Mobilnummer an.</span>
+        </div>
+
+        <div class="col_full_width atlui_form_title">Datum und Verfügbarkeit</div>
+        <div class="col_full_width">
+          <label class="w100" for="MovingDate" id="label_move_date">Umzugstermin</label>
+          <input class="atlui_block w100" type="text" name="MovingDate" id="MovingDate"/>
+          <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie einen (gewünschten) Umzugstermin an.</span>
+        </div>
+        <div class="col_full_width">
+          <label class="w100" for="Comments">Bemerkungen</label>
+          <textarea class="atlui_block w100 col_full_width" name="Comments" id="Comments"></textarea>
+        </div>
+
+        <div class="agb-hinweis">
+          Mit dem Klick auf „Kostenlose & Unverbindliche Offerten Anfordern“ bestätigen Sie …
+        </div>
+      </div>
+
+      <!-- ===== BUTTONS ===== -->
+      <div class="col_full_width altui_step_menu">
+        <button class="atlui_button_back" type="button" id="btnBack">Zurück</button>
+        <button class="atlui_button_forward" type="button" id="btnNext">Zum letzten Schritt</button>
+        <button class="atlui_button_submit atlui_hidden" type="submit" id="btnSubmit">
+          Kostenlose & Unverbindliche Offerten Anfordern
+        </button>
+        <span class="atlui_span_validation_error atlui_hidden" id="serverInvalid">Serverseitige Validierung fehlgeschlagen.</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/assets/air-datepicker.js" defer></script>
+<script type="module">
+  // ===== Simple session storage (wie zuvor vorgeschlagen, minimal inline) =====
+  const KEY = "atlas24Lead";
+  const getLead = () => { try { return JSON.parse(sessionStorage.getItem(KEY)||"{}"); } catch { return {}; } };
+  const setLead = (patch) => sessionStorage.setItem(KEY, JSON.stringify({ ...getLead(), ...patch }));
+
+  // Guard: Step1 muss vorhanden sein
+  const lead = getLead();
+  if (!lead?.MoveFromAddrZip) window.location.replace("/anfrage/step1");
+
+  // DOM
+  const sec2 = document.querySelector("#section-2");
+  const sec3 = document.querySelector("#section-3");
+  const btnBack = document.querySelector("#btnBack");
+  const btnNext = document.querySelector("#btnNext");
+  const btnSubmit = document.querySelector("#btnSubmit");
+  const progressFill = document.querySelector("#progressFill");
+  const stepLabel = document.querySelector("#stepLabel");
+  const ddlService = document.querySelector("#Service");
+
+  // Cleaning-Logik
+  const toggleClean = () => {
+    const cleaning = ddlService.value === "2";
+    document.querySelectorAll(".atlui_hide_for_clean").forEach(e => e.classList.toggle("atlui_hidden", cleaning));
+    document.querySelector("#title_move_out_2").innerText = cleaning ? "Reinigungsort" : "Am Auszugsort";
+    document.querySelector("#label_move_date")?.innerText = cleaning ? "Reinigungstermin" : "Umzugstermin";
+  };
+  ddlService.addEventListener("change", toggleClean); toggleClean();
+
+  // Regex (aus deinem Code)
+  const re = {
+    email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+    phone: /(?:\b(0041|0)|\b\+41)(\s?\(0\))?\s?[7][5-9]\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}\b/,
+    zip: /^(10[0-9]{2}|1[1-9][0-9]{2}|[2-8][0-9]{3}|9[0-5][0-9]{2}|960[0-9]|961[0-9]|962[0-9]|963[0-9]|964[0-9]|965[0-8])$/,
+    streetNum: /\d+[a-b]?\.?/,
+    date: /\d{2}(\.|-)\d{2}(\.|-)\d{4}$/
+  };
+  const showErr = (el, ok) => {
+    const err = el?.nextElementSibling;
+    el?.classList.toggle("atlui_element_validation_error", !ok);
+    if (err && err.tagName === "SPAN") err.classList.toggle("atlui_hidden", ok);
+  };
+
+  // Navigation
+  function toStep2(){
+    sec2.classList.remove("atlui_hidden");
+    sec3.classList.add("atlui_hidden");
+    btnNext.classList.remove("atlui_hidden");
+    btnSubmit.classList.add("atlui_hidden");
+    progressFill.style.width = "50%";
+    progressFill.textContent = "50%";
+    stepLabel.textContent = "Schritt 2 von 2";
+    window.scrollTo({ top: document.querySelector('.atlui_form_wrapper').offsetTop - 10, behavior: 'smooth' });
+  }
+  function toStep3(){
+    sec2.classList.add("atlui_hidden");
+    sec3.classList.remove("atlui_hidden");
+    btnNext.classList.add("atlui_hidden");
+    btnSubmit.classList.remove("atlui_hidden");
+    progressFill.style.width = "100%";
+    progressFill.textContent = "100%";
+    stepLabel.textContent = "Letzter Schritt";
+    window.scrollTo({ top: document.querySelector('.atlui_form_wrapper').offsetTop - 10, behavior: 'smooth' });
+  }
+
+  btnBack.addEventListener("click", () => {
+    if (!sec3.classList.contains("atlui_hidden")) {
+      toStep2();
+    } else {
+      window.location.href = "/anfrage/step1";
+    }
+  });
+
+  // Validierung Step2 minimal (wie zuvor)
+  const validStep2 = () => {
+    const Service = ddlService.value;
+    const MoveFromAddrStreet = document.querySelector("#MoveFromAddrStreet");
+    let ok = true;
+    showErr(MoveFromAddrStreet, re.streetNum.test(MoveFromAddrStreet.value||"")); ok &&= re.streetNum.test(MoveFromAddrStreet.value||"");
+    if (Service !== "2") {
+      const MoveToAddrStreet = document.querySelector("#MoveToAddrStreet");
+      const MoveToAddrZip = document.querySelector("#MoveToAddrZip");
+      if (MoveToAddrStreet) { const v = re.streetNum.test(MoveToAddrStreet.value||""); showErr(MoveToAddrStreet, v); ok &&= v; }
+      if (MoveToAddrZip)    { const v = re.zip.test(String(MoveToAddrZip.value||"")); showErr(MoveToAddrZip, v); ok &&= v; }
+    }
+    return ok;
+  };
+
+  // Next: speichert Step2 und springt zu Step3
+  btnNext.addEventListener("click", () => {
+    if (!validStep2()) return;
+    const data = Object.fromEntries(new FormData(document.querySelector("#form-step2-3")).entries());
+    // nur Step2-relevantes speichern (Personendaten kommen später)
+    setLead({
+      Service: data.Service,
+      MoveFromAddrStreet: data.MoveFromAddrStreet,
+      MoveFromNumOfRooms: data.MoveFromNumOfRooms,
+      MoveFromFloor: data.MoveFromFloor,
+      MoveFromElevatorExists: data.MoveFromElevatorExists,
+      MoveToAddrStreet: data.MoveToAddrStreet,
+      MoveToAddrZip: data.MoveToAddrZip,
+      MoveToFloor: data.MoveToFloor,
+      MoveToElevatorExists: data.MoveToElevatorExists
+    });
+    toStep3();
+  });
+
+  // Datepicker (Step3)
+  window.addEventListener("DOMContentLoaded", () => {
+    // @ts-ignore
+    new AirDatepicker('#MovingDate', {
+      locale: {
+        days: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+        daysShort: ['Son','Mon','Die','Mit','Don','Fre','Sam'],
+        daysMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+        months: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+        monthsShort: ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],
+        today: 'Heute', clear: 'Löschen', dateFormat: 'dd.MM.yyyy', timeFormat: 'HH:mm', firstDay: 1
+      },
+      minDate: Date.now() + 259200000
+    });
+  });
+
+  // Submit (Step3)
+  const serverInvalid = document.querySelector("#serverInvalid");
+  document.querySelector("#form-step2-3").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!sec3 || sec3.classList.contains("atlui_hidden")) return; // nur auf Step3 submitten
+
+    const FirstName = document.querySelector("#FirstName");
+    const LastName  = document.querySelector("#LastName");
+    const Email     = document.querySelector("#Email");
+    const Phone     = document.querySelector("#Phone");
+    const MovingDate= document.querySelector("#MovingDate");
+    const Comments  = document.querySelector("#Comments");
+
+    let ok = true;
+    const b1 = (FirstName.value||"").trim().length>0; showErr(FirstName, b1); ok &&= b1;
+    const b2 = (LastName.value||"").trim().length>0;  showErr(LastName , b2); ok &&= b2;
+    const b3 = re.email.test(Email.value||"");        showErr(Email    , b3); ok &&= b3;
+    const b4 = re.phone.test(Phone.value||"");        showErr(Phone    , b4); ok &&= b4;
+    const b5 = re.date.test(MovingDate.value||"");    showErr(MovingDate, b5); ok &&= b5;
+    if (!ok) return;
+
+    // Merge Step3
+    setLead({
+      FirstName: FirstName.value.trim(),
+      LastName : LastName.value.trim(),
+      Email    : Email.value.trim(),
+      Phone    : Phone.value.trim(),
+      MovingDate: MovingDate.value.trim(),
+      Comments : Comments.value.trim()
+    });
+
+    const payload = getLead();
+
+    // Loading-State
+    const oldTxt = btnSubmit.textContent;
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = "Senden…";
+    serverInvalid.classList.add("atlui_hidden");
+
+    try {
+      const resp = await fetch(`https://atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        cache: "no-store"
+      });
+      if (resp.ok) {
+        let token = await resp.text();
+        token = token.replaceAll('"','');
+        sessionStorage.removeItem(KEY);
+        window.location.href = `${window.location.origin}/validate_phone_number?token=${token}`;
+      } else {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = oldTxt;
+        serverInvalid.classList.remove("atlui_hidden");
+      }
+    } catch(err){
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = oldTxt;
+      serverInvalid.classList.remove("atlui_hidden");
+    }
+  });
+
+  // Init: Start auf Step2
+  toStep2();
+</script>

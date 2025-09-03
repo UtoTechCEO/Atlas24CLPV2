@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://service.atlas24.ch/sitemap-index.xml

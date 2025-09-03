@@ -1,0 +1,118 @@
+---
+import "../components/form-ui/atlui_form.css";
+import "../components/form-ui/atlui_form_mobile.css";
+import "../components/form-ui/air-datepicker.css";
+import "../components/Hero.css"
+---
+
+<section id="hero" class="hero-section">
+  <div class="hero-container">
+    <div class="hero-text">
+      <h1 class="hero-title">Umzug Zürich – Jetzt 5 Offerten vergleichen</h1>
+      <p class="hero-subline">Geprüfte Umzugsfirmen in Zürich. <strong>Gratis & unverbindlich</strong> – in <strong>2 Minuten</strong> …</p>
+
+      
+
+      <div class="hero-form">
+        <div class="container">
+          <div class="atlui_form_wrapper">
+            <form class="atlui_form atlui_form_offer_mobile" id="form-step1">
+              <input type="hidden" name="FormType" value="5" />
+              <div class="atlui_form_section" data-step-index="1">
+                <div class="col_full_width">
+                  <input class="atlui_block w100" type="number" min="0" max="9999"
+                         name="MoveFromAddrZip" id="MoveFromAddrZip"
+                         placeholder="Ihre Postleitzahl"
+                         data-atlui-validation-method="swiss_zip_code" onwheel="return false;" />
+                  <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie eine Postleitzahl an.</span>
+                </div>
+              </div>
+
+
+              
+              <div class="col_full_width altui_step_menu">
+                <button class="atlui_button_forward" type="submit" id="go-step2">Anfrage starten</button>
+              </div>
+              <div class="atlui_trust_text">
+                <span class="trust-icon"></span>
+                <strong>4.8 / 5</strong> basierend auf über <strong>3'500</strong> erfolgreichen Umzügen
+              </div>
+            </form>
+          </div>
+        </div>
+        <p class="hero-microcopy">Dauert ca. 2&nbsp;Minuten · Keine Registrierung</p>
+      </div>
+
+      <ul class="hero-usps">
+        <li>5 Offerten in 2 Minuten</li><li>Nur geprüfte Anbieter</li><li>Bis zu 40 % sparen</li><li>Lokale Firmen …</li>
+      </ul>
+    </div>
+
+  
+       <div class="hero-image">
+      <img
+        src="/images/Atlas_Mobile_Couple_640W.webp"
+        srcset="
+          /images/Atlas_Mobile_Couple_320W.webp 320w,
+          /images/Atlas_Mobile_Couple_480W.webp 480w,
+          /images/Atlas_Mobile_Couple_640W.webp 640w,
+          /images/Atlas_Mobile_Couple_800W.webp 800w
+        "
+        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 800px"
+        width="640"
+        height="400"
+        alt="Umzug in Zürich – Paar beim Umzug"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  
+</section>
+
+
+
+<script type="module">
+  // Warten bis DOM da ist
+  window.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("#form-step1");
+    const zip  = document.querySelector("#MoveFromAddrZip");
+    const err  = zip?.nextElementSibling;
+
+    if (!form || !zip) {
+      console.error("[Step1] Form oder ZIP-Input nicht gefunden");
+      return;
+    }
+
+    // Minimaler Storage-Helper (statt Import)
+    const KEY = "atlas24Lead";
+    const setLead = (patch) => {
+      try {
+        const cur = JSON.parse(sessionStorage.getItem(KEY) || "{}");
+        sessionStorage.setItem(KEY, JSON.stringify({ ...cur, ...patch }));
+      } catch (e) {
+        console.error("[Step1] sessionStorage Fehler:", e);
+      }
+    };
+
+    // Schweizer PLZ Regex wie bei dir
+    const reZip = /^(10[0-9]{2}|1[1-9][0-9]{2}|[2-8][0-9]{3}|9[0-5][0-9]{2}|960[0-9]|961[0-9]|962[0-9]|963[0-9]|964[0-9]|965[0-8])$/;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const v = String(zip.value || "").trim();
+      const ok = reZip.test(v);
+
+      if (err) err.classList.toggle("atlui_hidden", ok);
+      zip.classList.toggle("atlui_element_validation_error", !ok);
+      if (!ok) return;
+
+      setLead({ FormType: "5", MoveFromAddrZip: v });
+
+      // Sichere Ziel-URL: >>> HIER DEINEN WIRKLICHEN PFAD EINTRAGEN <<<
+      const TARGET = "/form_flow";   // z.B. wenn src/pages/anfrage/step2.astro existiert
+      console.log("[Step1] Redirect →", TARGET);
+      window.location.assign(TARGET);
+    });
+  });
+</script>
