@@ -30,7 +30,7 @@
     /* ====== Validation ====== */
     const validation_reg_exp = {
         email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-        phone: /(?:\b(0041|0)(\s?\(0\))?|\+41)\s?[7][5-9]\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}\b/, /*<-- Phone Version: Mobile only and excludes +41 07x */
+        phone: /^\s*(?:\+41(?!\s*(?:\(0\)|0))|0041(?:\s*\(0\))?|0)\s*7[5-9]\s*\d{3}\s*\d{2}\s*\d{2}\s*$/, /*<-- Phone Version: Mobile only and excludes +41 07x */
         /*Phone Version 2 (includes +41 079 which isnt served by api) phone: /(?:\b(0041|0)|\b\+41)(\s?\(0\))?\s?[7][5-9]\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}\b/,*/ /*<-- Only Mobile||Phone Version 1 All Phone Numbers --> /(\b(0041|0)|\B\+41)(\s?\(0\))?(\s)?[1-9]{2}(\s)?[0-9]{3}(\s)?[0-9]{2}(\s)?[0-9]{2}\b/,*/
         swiss_zip_code: /^(10[0-9]{2}|1[1-9][0-9]{2}|[2-8][0-9]{3}|9[0-5][0-9]{2}|960[0-9]|961[0-9]|962[0-9]|963[0-9]|964[0-9]|965[0-8])$/,
         street_num: /\d+[a-b]?\.?/,
