@@ -206,8 +206,9 @@ import "./air-datepicker.css";
             </div>
             <div class="col_full_width">
                 <label class="w100" for="Comments">Bemerkungen</label>
-                <textarea class="atlui_block w100 col_full_width" name="Comments" id="Comments"></textarea>
-                <span class="atlui_span_validation_error atlui_hidden"></span>
+                <textarea class="atlui_block w100 col_full_width" type="text" name="Comments" id="Comments" data-atlui-validation-method="char_max_200"></textarea>
+                <span class="atlui_span_validation_error atlui_hidden">Maximal 200 Zeichen erlaubt.</span>
+                <small id="comments_counter">0/200</small>
             </div>
         </div>
         <div class="col_full_width altui_step_menu">

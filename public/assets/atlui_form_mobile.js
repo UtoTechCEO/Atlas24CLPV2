@@ -43,7 +43,8 @@
         phone: (v) => { return validation_reg_exp.phone.test(v); },
         swiss_zip_code: (v) => { return validation_reg_exp.swiss_zip_code.test(v); },
         contains_street_num: (v) => { return validation_reg_exp.street_num.test(v); },
-        date: (v) => { return validation_reg_exp.date.test(v); }
+        date: (v) => { return validation_reg_exp.date.test(v); },
+        char_max_200: (v) => v.trim().length <= 200
     };
     
 
@@ -381,6 +382,10 @@ const update_progress = () => {
                         elem_is_valid = validation_methods.date(elem.value);
                         break;
 
+                    case 'Comments':
+                        elem_is_valid = validation_methods.char_max_200(elem.value); 
+                        break; // NEU Bemerkung
+
                     default:
                         elem_is_valid = validation_methods.non_empty(elem.value);
                 }
@@ -456,6 +461,22 @@ const update_progress = () => {
         initialize_element_validation();
 		
 
+    }
+
+    // NEU: Live-Zeichenzähler + Fehlermeldung für Bemerkungen
+    const comments = document.getElementById('Comments');
+    const commentsCounter = document.getElementById('comments_counter');
+    if (comments) {
+        const MAX = 200;
+        const updateComments = () => {
+            const len = comments.value.length;
+            const isOK = len <= MAX;
+            if (commentsCounter) commentsCounter.textContent = `${len}/${MAX}`;
+            update_validation_message(comments, isOK);
+        };
+        comments.addEventListener('input', updateComments);
+        comments.addEventListener('focusout', updateComments);
+        updateComments();
     }
 
     function prevent_form_submit_on_enter(e) {
