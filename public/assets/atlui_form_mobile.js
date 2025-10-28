@@ -164,7 +164,7 @@ function init_pagination() {
 
             let obj_entries = Object.fromEntries(form_data.entries()); //statisch mit Prod verknüpft
 
-            let response = await fetch('https://service.atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/', {
+            let response = await fetch('https://atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',   
