@@ -134,10 +134,6 @@ function init_pagination() {
     });
 }
 
-
-
-
-
     /* ====== Button load animation ====== */
     const load_span = document.createElement('span');
     load_span.classList.add('atlui_load_spinner');
@@ -167,8 +163,8 @@ function init_pagination() {
             const form_data = new FormData(e.target);
 
             let obj_entries = Object.fromEntries(form_data.entries()); //statisch mit Prod verknüpft
-            let response = await fetch(`https://atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/`, {
 
+            let response = await fetch('https://service.atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',   
@@ -410,7 +406,14 @@ const update_progress = () => {
 
     /* ====== Initialization ====== */
     function init_form() {
-       
+        
+        //Add the partnerId from the query parameters (if available)
+        const urlParams = new URLSearchParams(window.location.search);
+        const partnerId = urlParams.get('p');
+        if(partnerId !== null) {
+            document.getElementById('PartnerId').value = partnerId;
+        }
+
         //Initialize AirDatepicker with proper locale settings
         new AirDatepicker('#MovingDate', {
             locale: locale_de,
@@ -460,7 +463,6 @@ const update_progress = () => {
 
         initialize_element_validation();
 		
-
     }
 
     // NEU: Live-Zeichenzähler + Fehlermeldung für Bemerkungen
