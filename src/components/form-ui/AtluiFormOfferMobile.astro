@@ -204,11 +204,28 @@ import "./air-datepicker.css";
                 <input class="atlui_block w100" type="text" name="MovingDate" id="MovingDate" data-atlui-validation-method="date"/>
                 <span class="atlui_span_validation_error atlui_hidden">Bitte geben Sie einen (gewünschten) Umzugstermin an (Beispiel: 01.02.2026).</span>
             </div>
+
+            
             <div class="col_full_width">
-                <label class="w100" for="Comments">Bemerkungen</label>
-                <textarea class="atlui_block w100 col_full_width" name="Comments" id="Comments"></textarea>
-                <span class="atlui_span_validation_error atlui_hidden"></span>
-            </div>
+    <label class="w100" for="Comments">Bemerkungen</label>
+    <textarea 
+        class="atlui_block w100 col_full_width" 
+        name="Comments" 
+        id="Comments"
+        data-atlui-validation-method="char_max_200"></textarea>
+    <span class="atlui_span_validation_error atlui_hidden">Maximal 200 Zeichen erlaubt.</span>
+    <small id="comments_counter">0/200</small>
+</div> 
+
+
+
+
+<div class="col_full_width" class="atlui_hidden" data-step-index="3">
+    <input type="checkbox" class="ui-checkbox" id="PaintworkRequested" name="PaintworkRequested">
+                <span class="painter_checkbox_text" >Ja, ich möchte auch eine <strong>Maler-Offerte </strong> erhalten</span>  
+        </div>
+
+
         </div>
         <div class="col_full_width altui_step_menu">
             <button class="atlui_button_next atlui_button_forward atlui_hidden" type="button" id="atlui_btn_next">Zum letzten Schritt</button>
