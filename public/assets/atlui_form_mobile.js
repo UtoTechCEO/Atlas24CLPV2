@@ -38,30 +38,13 @@
     };
 
     const validation_methods = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        non_empty: (v) => v.length > 0,
-        email: (v) => validation_reg_exp.email.test(v),
-        phone: (v) => validation_reg_exp.phone.test(v),
-        swiss_zip_code: (v) => validation_reg_exp.swiss_zip_code.test(v),
-        contains_street_num: (v) => validation_reg_exp.street_num.test(v),
-        date: (v) => validation_reg_exp.date.test(v),
-        char_max_200: (v) => v.trim().length <= 200   // NEU
-=======
-=======
->>>>>>> parent of d1102f1 (painter request)
         non_empty: (v) => { return v.length > 0; },
         email: (v) => { return validation_reg_exp.email.test(v); },
         phone: (v) => { return validation_reg_exp.phone.test(v); },
         swiss_zip_code: (v) => { return validation_reg_exp.swiss_zip_code.test(v); },
         contains_street_num: (v) => { return validation_reg_exp.street_num.test(v); },
-<<<<<<< HEAD
         date: (v) => { return validation_reg_exp.date.test(v); },
         char_max_200: (v) => v.trim().length <= 200
->>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
-=======
-        date: (v) => { return validation_reg_exp.date.test(v); }
->>>>>>> parent of d1102f1 (painter request)
     };
     
 
@@ -139,18 +122,6 @@ function init_pagination() {
                 view_index++;
                 update_views();
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        });
-
-        btn_back.addEventListener('click', () => {
-            if ((view_index - 1) >= start_index) {
-                view_index--;
-                update_views();
-            }
-        });
-    }
-=======
         }
     });
 
@@ -162,24 +133,6 @@ function init_pagination() {
         }
     });
 }
->>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
-=======
-        }
-    });
-
-
-    btn_back.addEventListener('click', (e) => {
-        if ((view_index - 1) >= start_index) {
-            view_index--;
-            update_views();
-        }
-    });
-}
-
-
-
-
->>>>>>> parent of d1102f1 (painter request)
 
     /* ====== Button load animation ====== */
     const load_span = document.createElement('span');
@@ -209,19 +162,9 @@ function init_pagination() {
             submit_btn_enter_load();
             const form_data = new FormData(e.target);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            let response = await fetch(`https://atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/`, {
-=======
             let obj_entries = Object.fromEntries(form_data.entries()); //statisch mit Prod verknüpft
 
             let response = await fetch('https://atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/', {
->>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
-=======
-            let obj_entries = Object.fromEntries(form_data.entries()); //statisch mit Prod verknüpft
-            let response = await fetch(`https://atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/`, {
-
->>>>>>> parent of d1102f1 (painter request)
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',   
@@ -432,12 +375,6 @@ const update_progress = () => {
                         break;
                     
                     case 'MovingDate':
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        elem_is_valid = validation_methods.date(elem.value); break;
-                    case 'Comments':
-                        elem_is_valid = validation_methods.char_max_200(elem.value); break;
-=======
                         elem_is_valid = validation_methods.date(elem.value);
                         break;
 
@@ -445,12 +382,6 @@ const update_progress = () => {
                         elem_is_valid = validation_methods.char_max_200(elem.value); 
                         break; // NEU Bemerkung
 
->>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
-=======
-                        elem_is_valid = validation_methods.date(elem.value);
-                        break;
-
->>>>>>> parent of d1102f1 (painter request)
                     default:
                         elem_is_valid = validation_methods.non_empty(elem.value);
                 }
@@ -475,9 +406,6 @@ const update_progress = () => {
 
     /* ====== Initialization ====== */
     function init_form() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         
         //Add the partnerId from the query parameters (if available)
         const urlParams = new URLSearchParams(window.location.search);
@@ -487,11 +415,6 @@ const update_progress = () => {
         }
 
         //Initialize AirDatepicker with proper locale settings
->>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
-=======
-       
-        //Initialize AirDatepicker with proper locale settings
->>>>>>> parent of d1102f1 (painter request)
         new AirDatepicker('#MovingDate', {
             locale: locale_de,
             minDate: Date.now() + 259200000,
@@ -539,26 +462,6 @@ const update_progress = () => {
         });
 
         initialize_element_validation();
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-        // NEU: Live-Zeichenzähler + Fehlermeldung für Bemerkungen
-        const comments = document.getElementById('Comments');
-        const commentsCounter = document.getElementById('comments_counter');
-        if (comments) {
-            const MAX = 200;
-            const updateComments = () => {
-                const len = comments.value.length;
-                const isOK = len <= MAX;
-                if (commentsCounter) commentsCounter.textContent = `${len}/${MAX}`;
-                update_validation_message(comments, isOK);
-                update_progress();
-            };
-            comments.addEventListener('input', updateComments);
-            comments.addEventListener('focusout', updateComments);
-            updateComments();
-        }
-=======
 		
     }
 
@@ -576,11 +479,6 @@ const update_progress = () => {
         comments.addEventListener('input', updateComments);
         comments.addEventListener('focusout', updateComments);
         updateComments();
->>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
-=======
-		
-
->>>>>>> parent of d1102f1 (painter request)
     }
 
     function prevent_form_submit_on_enter(e) {
