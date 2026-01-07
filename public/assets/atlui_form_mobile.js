@@ -37,6 +37,7 @@
     };
 
     const validation_methods = {
+<<<<<<< HEAD
         non_empty: (v) => v.length > 0,
         email: (v) => validation_reg_exp.email.test(v),
         phone: (v) => validation_reg_exp.phone.test(v),
@@ -44,6 +45,15 @@
         contains_street_num: (v) => validation_reg_exp.street_num.test(v),
         date: (v) => validation_reg_exp.date.test(v),
         char_max_200: (v) => v.trim().length <= 200   // NEU
+=======
+        non_empty: (v) => { return v.length > 0; },
+        email: (v) => { return validation_reg_exp.email.test(v); },
+        phone: (v) => { return validation_reg_exp.phone.test(v); },
+        swiss_zip_code: (v) => { return validation_reg_exp.swiss_zip_code.test(v); },
+        contains_street_num: (v) => { return validation_reg_exp.street_num.test(v); },
+        date: (v) => { return validation_reg_exp.date.test(v); },
+        char_max_200: (v) => v.trim().length <= 200
+>>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
     };
 
     /* ====== View Index ====== */
@@ -110,6 +120,7 @@
                 view_index++;
                 update_views();
             }
+<<<<<<< HEAD
         });
 
         btn_back.addEventListener('click', () => {
@@ -119,6 +130,19 @@
             }
         });
     }
+=======
+        }
+    });
+
+
+    btn_back.addEventListener('click', (e) => {
+        if ((view_index - 1) >= start_index) {
+            view_index--;
+            update_views();
+        }
+    });
+}
+>>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
 
     /* ====== Button load animation ====== */
     const load_span = document.createElement('span');
@@ -147,7 +171,13 @@
             const form_data = new FormData(e.target);
             let obj_entries = Object.fromEntries(form_data.entries());
 
+<<<<<<< HEAD
             let response = await fetch(`https://atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/`, {
+=======
+            let obj_entries = Object.fromEntries(form_data.entries()); //statisch mit Prod verknüpft
+
+            let response = await fetch('https://atlas24.ch/?rest_route=/atlas24-api/v1/create_lead/', {
+>>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(obj_entries),
@@ -305,9 +335,19 @@
                     case 'Phone':
                         elem_is_valid = validation_methods.phone(elem.value); break;
                     case 'MovingDate':
+<<<<<<< HEAD
                         elem_is_valid = validation_methods.date(elem.value); break;
                     case 'Comments':
                         elem_is_valid = validation_methods.char_max_200(elem.value); break;
+=======
+                        elem_is_valid = validation_methods.date(elem.value);
+                        break;
+
+                    case 'Comments':
+                        elem_is_valid = validation_methods.char_max_200(elem.value); 
+                        break; // NEU Bemerkung
+
+>>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
                     default:
                         elem_is_valid = validation_methods.non_empty(elem.value);
                 }
@@ -329,6 +369,18 @@
 
     /* ====== Initialization ====== */
     function init_form() {
+<<<<<<< HEAD
+=======
+        
+        //Add the partnerId from the query parameters (if available)
+        const urlParams = new URLSearchParams(window.location.search);
+        const partnerId = urlParams.get('p');
+        if(partnerId !== null) {
+            document.getElementById('PartnerId').value = partnerId;
+        }
+
+        //Initialize AirDatepicker with proper locale settings
+>>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
         new AirDatepicker('#MovingDate', {
             locale: locale_de,
             minDate: Date.now() + 259200000,
@@ -366,6 +418,7 @@
         });
 
         initialize_element_validation();
+<<<<<<< HEAD
 
         // NEU: Live-Zeichenzähler + Fehlermeldung für Bemerkungen
         const comments = document.getElementById('Comments');
@@ -383,6 +436,25 @@
             comments.addEventListener('focusout', updateComments);
             updateComments();
         }
+=======
+		
+    }
+
+    // NEU: Live-Zeichenzähler + Fehlermeldung für Bemerkungen
+    const comments = document.getElementById('Comments');
+    const commentsCounter = document.getElementById('comments_counter');
+    if (comments) {
+        const MAX = 200;
+        const updateComments = () => {
+            const len = comments.value.length;
+            const isOK = len <= MAX;
+            if (commentsCounter) commentsCounter.textContent = `${len}/${MAX}`;
+            update_validation_message(comments, isOK);
+        };
+        comments.addEventListener('input', updateComments);
+        comments.addEventListener('focusout', updateComments);
+        updateComments();
+>>>>>>> 0b95f7a7ba358abb36b2b0ad60a9eee6d8d2445a
     }
 
     function prevent_form_submit_on_enter(e) {
