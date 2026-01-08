@@ -354,7 +354,7 @@ const update_progress = () => {
 
         current_section_elements.forEach((elem) => {
             let elem_is_valid = true;
-            if(elem.type !== 'radio') { //Exclude radio buttons as they should always have a value
+            if(elem.type !== 'radio' && elem.type !== 'checkbox') { //Exclude radio buttons as they should always have a value
                 switch(elem.name) {
                     case 'MoveFromAddrStreet':
                     case 'MoveToAddrStreet':
