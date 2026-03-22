@@ -10,6 +10,8 @@ export default defineConfig({
       // alles, was hier false zurückgibt, kommt NICHT in die Sitemap
       filter: (page) => ![
         '/validate_phone_number/',
+        '/embed/',
+        '/embed_validate/',
         // optional:
         // '/form_flow/',
         // '/api/', '/preview/'

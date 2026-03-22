@@ -177,7 +177,13 @@ function init_pagination() {
                 //Redirect to the 2FA page if lead creation was successful
                 let token = await response.text();
                 token = token.replaceAll('"', ''); //Restated due to asynchronus function call (retruns promise)
-                window.location.href = `${window.location.origin}/validate_phone_number?token=${token}`;
+                
+                //Redirect to /embed_validate when embeded, else to normal page
+                const redirect_url = window.location.pathname.includes('/embed/') ?
+                                        `${window.location.origin}/embed_validate/?token=${token}`:
+                                        `${window.location.origin}/validate_phone_number/?token=${token}`
+
+                window.location.href = redirect_url;
             } else {
                 //Else display the 'Serverseitige Validierung Fehlgeschlagen' error message
                 submit_btn_exit_load();

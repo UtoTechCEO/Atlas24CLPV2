@@ -1,0 +1,42 @@
+---
+// pages/embed_validate.astro
+// Minimal iframe-embeddable variant of the phone verification step.
+// Accessible at /embed_validate/ – no header, footer, or tracking scripts.
+
+export const prerender = true;
+
+import AtluiFormVerificationEmbed from "../components/AtluiFormVerificationEmbed.astro";
+---
+
+<!doctype html>
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>SMS bestätigen – Atlas24</title>
+
+    <!-- Verification form logic -->
+    <script src="/assets/atlui_form_verification_V2.js" defer></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        font-family: Roboto, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <AtluiFormVerificationEmbed />
+      <div id="two-fa-feedback"></div>
+    </main>
+  </body>
+</html>

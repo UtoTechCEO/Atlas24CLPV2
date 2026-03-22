@@ -1,0 +1,40 @@
+---
+// pages/embed.astro
+// Minimal iframe-embeddable page with only the offer form.
+// Accessible at /embed/ – no header, footer, or tracking scripts.
+
+export const prerender = true;
+
+import AtluiFormOfferMobile from "../components/form-ui/AtluiFormOfferMobile.astro";
+---
+
+<!doctype html>
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Umzugsofferte anfordern</title>
+
+    <!-- Form logic -->
+    <script src="/assets/atlui_form_mobile.js" defer></script>
+    <script src="/assets/air-datepicker.js" defer></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        font-family: Roboto, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <AtluiFormOfferMobile />
+  </body>
+</html>
