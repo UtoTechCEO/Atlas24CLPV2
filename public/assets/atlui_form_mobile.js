@@ -179,7 +179,7 @@ function init_pagination() {
                 token = token.replaceAll('"', ''); //Restated due to asynchronus function call (retruns promise)
                 
                 //Redirect to /embed_validate when embeded, else to normal page
-                const redirect_url = window.location.pathname.includes('/embed/') ?
+                const redirect_url = window.location.pathname.includes('embed') ?
                                         `${window.location.origin}/embed_validate/?token=${token}`:
                                         `${window.location.origin}/validate_phone_number/?token=${token}`
 
@@ -318,8 +318,6 @@ function init_pagination() {
 };
 
 const update_progress = () => {
-    console.log('[Progress] update_progress() wurde aufgerufen');
-
     let current_progress = 0;
 
     atlui_validation_map.forEach((field_obj) => {
@@ -332,17 +330,12 @@ const update_progress = () => {
         const field_name = elem.name;
         const is_text_field = ['text', 'email', 'tel', 'date', 'number'].includes(elem.type) || elem.tagName.toLowerCase() === 'textarea';
 
-
-        console.log(`[Progress] ${field_name} | Typ: ${elem.type} | Valid: ${field_obj.is_valid()} | Gewicht: ${field_weights[field_name] || 0}`);
-
         if (is_text_field && field_obj.is_valid()) {
             const raw_weight = field_weights[field_name] || 0;
             const weight = Math.max(raw_weight, 5);
             current_progress += weight;
         }
     });
-
-    console.log(`[Progress] Gesamtpunkte: ${current_progress}`);
 
     let progress_rounded = Math.min(Math.round(current_progress), 100);
 
