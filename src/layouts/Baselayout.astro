@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <!-- Performance hints -->
 
-    <link rel="preconnect" href="https://consent.cookiebot.com" crossorigin>
+    <!-- <link rel="preconnect" href="https://consent.cookiebot.com" crossorigin> -->
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="preconnect" href="https://www.clarity.ms" crossorigin>
 
@@ -32,14 +32,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Formular-Logik: schnell, aber nicht render-blockend -->
     <script src="/assets/atlui_form_mobile.js" defer data-cookieconsent="functionality"></script>
 
-    <!-- Cookiebot: Auto Blocking -->
-    <script 
+    <!-- Cookiebot: Auto Blocking – TEMPORARILY DISABLED -->
+    <!--
+    <script
       id="Cookiebot"
       src="https://consent.cookiebot.com/uc.js"
       data-cbid="decc716e-21fc-495c-8d28-ddbcfefa21df"
       data-blockingmode="auto"
       type="text/javascript">
     </script>
+    -->
 
     <!-- Consent Mode v2 – Default Settings -->
     <script data-cookieconsent="ignore">
@@ -65,12 +67,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Consent Mode Update bei Zustimmung -->
 <script is:inline>
   function loadGtag() {
-    if (!window.Cookiebot || !window.Cookiebot.consents?.marketing) {
+    if (window.Cookiebot && !window.Cookiebot.consents?.marketing) {
       console.warn("[gtag] Kein Consent für Marketing – gtag.js wird nicht geladen");
       return;
     }
 
-    console.log("[gtag] Consent vorhanden – gtag.js wird geladen");
+    console.log("[gtag] Consent vorhanden (oder CMP deaktiviert) – gtag.js wird geladen");
 
     const s = document.createElement("script");
     s.src = "https://www.googletagmanager.com/gtag/js?id=AW-17057503111";
@@ -95,6 +97,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         console.log("[gtag] Conversion Event ausgelöst");
       }
     };
+  }
+
+  // If Cookiebot is disabled, load gtag directly
+  if (!window.Cookiebot) {
+    document.addEventListener("DOMContentLoaded", loadGtag);
   }
 
   // Consent sofort prüfen, wenn schon gesetzt
