@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <!-- Performance hints -->
 
-    <!-- <link rel="preconnect" href="https://consent.cookiebot.com" crossorigin> -->
+    <link rel="preconnect" href="https://consent.cookiebot.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="preconnect" href="https://www.clarity.ms" crossorigin>
 
@@ -32,8 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Formular-Logik: schnell, aber nicht render-blockend -->
     <script src="/assets/atlui_form_mobile.js" defer data-cookieconsent="functionality"></script>
 
-    <!-- Cookiebot: Auto Blocking – TEMPORARILY DISABLED -->
-    <!--
+    <!-- Cookiebot: Auto Blocking -->
     <script
       id="Cookiebot"
       src="https://consent.cookiebot.com/uc.js"
@@ -41,20 +40,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       data-blockingmode="auto"
       type="text/javascript">
     </script>
-    -->
 
-    <!-- Consent Mode v2 – Granted (Cookiebot disabled) -->
+    <!-- Consent Mode v2 – Defaults denied, Cookiebot updates on consent -->
     <script data-cookieconsent="ignore">
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { dataLayer.push(arguments); }
 
       gtag("consent", "default", {
-        ad_personalization: "granted",
-        ad_storage: "granted",
-        ad_user_data: "granted",
-        analytics_storage: "granted",
-        functionality_storage: "granted",
-        personalization_storage: "granted",
+        ad_personalization: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
         security_storage: "granted"
       });
     </script>
