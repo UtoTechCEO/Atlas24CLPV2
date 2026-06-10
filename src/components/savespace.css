@@ -1,0 +1,126 @@
+/* SaveSpace Partner Section */
+
+.savespace-section {
+  background-color: #f0f4f8;
+  padding: 3rem 1rem;
+}
+
+.savespace-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.savespace-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(29, 146, 223, 0.18);
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.savespace-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.savespace-logo {
+  max-width: 180px;
+  height: auto;
+  display: block;
+}
+
+.savespace-label {
+  display: inline-block;
+  color: #1d92df;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.savespace-title {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  color: #002093;
+  margin: 0 0 1rem 0;
+}
+
+.savespace-text {
+  max-width: 720px;
+  margin: 0 auto 1rem auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #263238;
+}
+
+.savespace-discount {
+  max-width: 720px;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #002093;
+}
+
+.savespace-discount strong {
+  color: #1d92df;
+  font-weight: 800;
+}
+
+.savespace-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1d92df;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.savespace-button:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.savespace-note {
+  margin: 1rem 0 0 0;
+  font-size: 0.85rem;
+  color: #607d8b;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .savespace-section {
+    padding: 2rem 1rem;
+  }
+
+  .savespace-card {
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .savespace-logo-wrap {
+    justify-content: flex-start;
+  }
+
+  .savespace-logo {
+    max-width: 150px;
+  }
+
+  .savespace-title {
+    font-size: 1.5rem;
+  }
+
+  .savespace-text,
+  .savespace-discount {
+    font-size: 1rem;
+  }
+
+  .savespace-button {
+    width: 100%;
+    text-align: center;
+  }
+}
